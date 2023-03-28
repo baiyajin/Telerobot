@@ -1,0 +1,114 @@
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+
+.nav-search {
+    font-size: 16px;
+    font-size: 1.6rem;
+    float: right;
+    color: #777;
+    line-height: 26px;
+    margin: 30px 5px 0 5px;
+    padding: 0 8px 3px;
+    cursor: pointer;
+}
+
+
+.nav-menu {
+    float: left;
+}
+.nav-menu, .nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    _float: left;
+}
+
+.nav-menu li {
+    position: relative;
+    white-space: nowrap;
+    *white-space: normal;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+}
+
+
+.nav-menu a {
+    display: block;
+    position: relative;
+    zoom: 1;
+}	
+a {
+    color: #444;
+    text-decoration: none;
+}
+
+
+a:visited {
+    color: #555;
+}
+
+.main-box {
+    background: #f3f3f3;
+}
+.main-box .main-box-header {
+	background-color: #ffffff;
+}
+.main-box .main-box-body {
+	background-color: #ffffff;
+}
+
+.sContent {
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 1.9;
+    margin-top: 20px;
+}
+
+.sContent h4 {
+    font-size: 16px;
+    font-weight: bolder;
+    text-indent: 2em;
+}
+.sContent p {
+    text-indent: 2em;
+    margin: 0 0 12px 0;
+}
+
+.wp-block-image {
+    max-width: 100%;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+.glyphicon {
+    color: #b6b6b6;
+}
+.glyphicon:hover{
+	color: #555;
+}
+
+.entry-header h1 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    margin: 35px -20px 0 -20px;
+    padding: 5px 20px;
+    color: #253443;
+}
+
+.wp-block-image img {
+    vertical-align: middle;
+    width: 100%;
+}
+.sContent > .subTitle{
+	font-size: 18px;
+}
+
+

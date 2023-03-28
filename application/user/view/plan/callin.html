@@ -1,0 +1,493 @@
+{extend name="public/base" /}
+{block name="body"}
+
+<style type="text/css">
+	
+.table tbody>tr>td {
+	padding: 6px 8px;
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+}
+
+.messageinfo{
+ 	text-align:right;
+}
+.infotable tr td{
+	padding:5px;
+}
+.textwidth{
+	width:250px;
+}
+
+</style>
+
+<link href="__PUBLIC__/plugs/datepicker/css/foundation-datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.js"></script>
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.zh-CN.js"></script>
+
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			    <h1><i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-bodadianhua"></i>呼入场景</h1>
+				<button class="btn btn-primary" onclick="showModal(0);"><i class="fa fa-plus-circle fa-lg"></i>添加呼入场景</button>
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+		
+		
+			<div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+			<div class="table-responsive">
+			
+				<table class="table table-bordered table-hover">
+			    	<thead>
+						<tr>
+							<!--<th class="text-center"></th>-->
+							<th class="text-center">呼入场景名称</th>
+							<th class="text-center">话术</th>
+							<th class="text-center">状态</th>
+							<th class="text-center">创建时间</th>
+							<th class="text-center">操作</th> 
+						</tr>
+					</thead>
+				    <tbody>
+				    	
+						{notempty name="list"}
+				        	{volist name="list" id="vo"}
+			        			<tr>
+			        				
+			        				<!--<td class="text-center">
+			        					<input type="checkbox" name="customerIds" class="customerIds" value="{$vo.id}"/>
+			        				</td>-->
+			        				
+			        				<td class="text-center">
+			        					{$vo.task_name}
+			        				</td>
+			        				
+			        				<td class="text-center">
+			        					{$vo.scenarios}
+			        				</td>
+			        				
+			        				<td class="text-center">
+			        					
+			        					{switch name="$vo.status"}
+											{case value="1"}开启{/case}
+											{case value="2"}人工暂停{/case}
+											{case value="3"}停止{/case}
+											{case value="4"}欠费{/case}
+											{case value="-1"}软删除{/case}
+											{default /}是
+										{/switch}
+			        					
+			        				</td>
+			        				<td class="text-center">
+			        					{$vo.create_time}
+			        				</td>
+			        				<td class="text-center">
+			        				
+			        					<a href="javascript:void(0);" onclick="showModal('{$vo.id}');">编辑</a>
+			        						&nbsp;&nbsp;
+			        					<a href="javascript:void(0);" onclick="delPlan('{$vo.id}');">删除</a>
+			        					
+			        				</td>
+			        				
+			        			</tr>
+				            {/volist}
+				        {else /}
+				           <tr><td colspan="5" style="text-align:center;">没有数据</td></tr>
+						{/notempty}
+
+					</tbody>
+				</table>
+				
+				{$page}
+
+			</div>
+				     
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+ 	
+ //设置状态
+  function setstatus(id,status){			
+  	 var url = "{:url('setstatus')}";	
+  	 $.ajax({
+  	        url : url,
+  	        dataType : "json", 
+  	        type : "post",
+  	        data : {'pId':id,'status':status},
+  	        success: function(data){
+  	        	if (data.code) {
+ 		    		 alert(data.msg);
+ 		    	}else{
+ 		    		 location.reload();
+ 		    	}
+  	        },
+  	        error : function() {
+  	        	alert('失败。');
+  	        }
+  	  });
+  }
+ 
+  
+  //删除
+  function delPlan(id){
+  
+  	 var r=confirm('确认删除?');
+      	if (!r) 
+            return; 
+ 
+      	var ids=[];
+     	if(id){
+     		ids.push(id);
+     	}
+     	else{
+     		
+         	 var roleids = document.getElementsByName("customerIds");
+     		 for ( var j = 0; j < roleids.length; j++) {
+     		    if (roleids.item(j).checked == true) {
+     		    	ids.push(roleids.item(j).value);
+     		    }
+     		 }
+     	}
+ 		
+     	if(!ids.length){
+     		alert("至少选择一条。");
+     		 return false; 
+     	}
+   		
+   		$.post("{:url('delCallIn')}",{'id':ids},function(data){
+			if(data){ 
+				alert(data);
+			}else{
+				window.location.href=window.location.href;
+			}
+ 		}); 
+  }
+ 
+ </script>
+  
+</div>
+
+
+
+<div class="modal fade" id="checkpage" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    
+	<div class="modal-dialog">
+	    	
+	    <div class="modal-content">
+	    	
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	               <span aria-hidden="true">×</span>
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">添加呼入场景</h4>
+	        </div>
+	        
+	       <div class="modal-body pagelists">
+   	
+				<form id="form" method="post" class="form-horizontal" enctype="multipart/form-data" method="post">	
+	
+				
+					<div class="form-group" style="margin-top:20px;">
+						<label class="col-lg-3 control-label"><span style="color:red;">*</span>任务名称:</label>
+						<div class="col-lg-9 col-sm-9">
+							 <input type="text" class="form-control textwidth" placeholder="任务名称" name="name" id="callInName" value="" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label"><span style="color:red;">*</span>场景话术:</label>
+						<div class="col-lg-9 col-sm-9">
+							
+							<select name="scenarios_id" id="scenarios_id" class="form-control textwidth">
+								<option value="">请选择话术</option>
+								{volist name="scenarioslist" id="item"}
+									<option value="{$item['id']}">
+										{$item['name']}
+									</option>
+								{/volist}
+							</select>
+							
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label"><span style="color:red;">*</span>呼叫方式：</label>
+						<div class="col-lg-9 col-sm-9">
+							<div class="btn-group">
+								<button type="button" id="callTypezero" class="btn btn-primary call-type" data-v="0" >网关</button>
+								
+								<button type="button" id="callTypeOne" class="btn btn-default call-type" data-v="1" >线路</button>
+							</div>
+							 <input type="hidden" name="call_type" id="call_type" value=0 />
+							 
+							<select id="phone_id" class="form-control textwidth" name="phone_id">
+							
+							</select>
+							
+						</div>
+					</div>
+					
+					<script>
+					//var call_type = {$list.config.call_type|default=0};
+					 var phone = "";
+						$(function(){ 
+							$(".call-type").click(function(){
+								$(".call-type").attr('class', 'btn btn-default call-type');
+								$(this).attr('class', 'btn btn-primary call-type');
+								$('#call_type').val($(this).attr('data-v'));
+								bindCallNums($(this).attr('data-v'), phone);
+							});
+							
+						}); 
+					</script>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label">是否立即启动：</label>
+						<div class="col-lg-9 col-sm-9">
+							<input type="checkbox" style="float: left;margin-top: 10px;" name="startup" id="startup" value="1" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label">备注：</label>
+						<div class="col-lg-9 col-sm-9">
+							<textarea name="remark" class="form-control" placeholder="备注" id="remark" rows="2" style="width: 70%;resize: auto;min-height: inherit;">{$list.remark|default=''}</textarea>
+						</div>
+					</div>
+			
+				 
+					<div class="form-group">
+						
+						<div class="col-lg-offset-2 col-lg-9" style="text-align: center;">	
+						
+							<input type="hidden" name="callInId" id="callInId" value="" />	
+							
+							<span class="btn btn-primary submit-btn" onclick="checkform();">确 定</span>
+							<button class="btn btn-default" data-dismiss="modal">关 闭</button>
+							
+						</div>
+						
+					</div>
+		
+				</form>	 
+				
+	       </div>
+	       <div style="clear:both"></div>
+	
+		 </div>
+	           
+    </div>
+   
+    <script type="text/javascript">
+	      	
+		var taskId = 0;	
+	    function showModal(id){
+
+			 if(id){
+			 	
+			    var url = "{:url('user/Plan/getCallInInfo')}";	
+				$.ajax({
+					url : url,
+					dataType : "json", 
+					type : "post",
+					data : {'id':id},
+					success: function(data){	
+						
+						if (data.code) {
+							alert(data.msg);
+						}else{
+							
+							$('#checkpage').modal('show');
+							
+							var backdata = data.data;
+						
+							$("#callInId").val(backdata.id);	 
+							$("#callInName").val(backdata.task_name);		
+							$("#scenarios_id").val(backdata.scenarios_id);	
+							
+							$("#remark").val(backdata.remark);	 
+							
+							if(backdata.status == '1'){
+								$("#startup").prop("checked",true);
+							}
+							
+						
+							if(backdata.call_type == '1'){
+								
+								$("#callTypezero").attr("class","btn btn-default call-type");
+								$("#callTypeOne").attr("class","btn btn-primary call-type");	
+							
+							}
+							
+						
+							call_type = backdata.call_type;
+							
+							//bindCallNums(call_type,backdata.phone);
+							bindCallNums(call_type,backdata.line_id);
+							
+							//if(backdata.call_type == '1'){
+								$("#phone_id").val(backdata.line_id);	 	
+							//}
+						
+						}	 
+
+				
+						
+					},
+					error : function() {
+						alert('审核信息失败。');
+					}
+				});
+				
+			 }
+			 else{
+			 	
+				$("#callInId").val("");
+				$("#callInName").val("");
+				$("#scenarios_id").val("");
+				$("#phone_id").val("");
+	     		$("#remark").val("");
+	     			
+				$("#startup").prop("checked",false);
+
+	     		bindCallNums(0,0);
+	     		
+   				$('#checkpage').modal('show');
+   				phone = ""; 
+			}
+			
+	    }
+	     
+	    
+		function bindCallNums(type,phone_id){
+			$.ajax({
+				
+				type: "POST",
+				dataType:'json',
+				url: "{:url('User/Plan/bindCallNum')}",
+				cache: false,
+				async:false,
+				data: {"type":type,'phone':phone_id},
+				success: function(res) {
+					
+					if (res.code == 0) {
+						
+						var optionstring = "";
+						var jsonObj = res.data;
+						var is_select = "";
+						$("#phone_id").empty();
+						//return;
+						for (var j = 0; j < jsonObj.length; j++) {
+							
+							is_select = "";
+							if (jsonObj[j].id == phone_id){
+								console.log(phone_id);
+								is_select =  'selected';
+								
+							}
+							optionstring += '<option value="' + jsonObj[j].id + '"' + is_select +' >'+ jsonObj[j].phone + '</option>';
+						}
+						
+						if (type == '1'){
+							//console.log(optionstring);
+							$("#phone_id").append("<option value=''>请选择中继线路</option> ");
+						}
+						else{
+							$("#phone_id").append("<option value=''>请选择机器座席</option> ");
+							if (phone_id){
+								phone = phone_id;
+							}
+						}
+						$("#phone_id").append(optionstring);
+						
+					}else{
+						//alert(data.msg);
+					}
+					
+				},
+				error: function(data) {
+					// alert("提交失败");
+				}
+				
+			});
+		
+		}
+			
+	 
+			 
+		//检查表单的必填项
+		function checkform(){
+
+			var name = $("#callInName").val();
+			if(!name){
+				alert("任务名称不能为空"); 
+				return false; 
+			}
+			
+			var scenarios_id = $("#scenarios_id").val();
+			if(!scenarios_id){
+				alert("场景话术必选"); 
+				return false; 
+			}
+			
+			var phone_id = $("#phone_id").val();
+			if(!phone_id){
+				alert("请选择呼叫方式"); 
+				return false; 
+			}
+			
+		
+					
+			var planId = $("#planId").val();
+	
+			var href = "{:url('user/Plan/addCallIn')}";
+				 
+			 $.ajax({
+				 type: "POST",
+				 dataType:'json',
+				 url: href,
+				 cache: false,
+				 data: $("#form").serialize(),
+				 success: function(data) {
+					 
+					if (data.code == 0) {
+						$('#checkpage').modal('hide');
+						location.reload();
+					}
+					else{
+						alert(data.msg);
+					}
+					
+				 },
+				 error: function(data) {
+					 alert("提交失败");
+				 }
+			 })  
+		}
+
+
+	    
+      </script>
+      
+   
+</div>
+
+
+
+{/block}
+

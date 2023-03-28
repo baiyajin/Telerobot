@@ -1,0 +1,24 @@
+wget  http://github.com/downloads/rvoicilas/inotify-tools/inotify-tools-3.14.tar.gz(有下载好的，inotify-tools-3.14.tar.gz）:root/
+tar zxvf inotify-tools-3.14.tar.gz
+cd inotify-tools-3.14
+./configure && make && make install
+
+ln -s /usr/local/lib/libinotifytools.so.0 /usr/lib64/libinotifytools.so.0
+
+1、将run_rsync.sh中的ip换成FS服务器的IP，如果 WEB和FS在同一个区可以使用内网IP
+2、将脚本移动到/etc/rc.d/init.d目录下
+cp  /www/wwwroot/telrobot/run_rsync.sh /etc/rc.d/init.d
+
+3、增加脚本的可执行权限
+chmod +x /etc/rc.d/init.d/run_rsync.sh
+
+4、添加脚本到开机自动启动项目中
+cd /etc/rc.d/init.d
+chkconfig --add run_rsync.sh
+chkconfig run_rsync.sh on
+
+5、使用ssh创建密钥的方法
+ssh-keygen
+将源服务器上/root/.ssh/id_rsa.pub 复制到FS服务器/root/.ssh/authorized_keys
+
+

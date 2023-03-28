@@ -1,0 +1,606 @@
+{extend name="public/base" /}
+{block name="body"}
+
+
+<style type="text/css">
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+#top-menu {
+    width: 1120px;
+    margin: 0 auto;
+    display: table;
+    transition-duration: .5s;
+}
+
+.nav-search {
+    font-size: 16px;
+    font-size: 1.6rem;
+    float: right;
+    color: #777;
+    line-height: 26px;
+    margin: 30px 5px 0 5px;
+    padding: 0 8px 3px;
+    cursor: pointer;
+}
+
+.logo-site, .logo-sites {
+    position: relative;
+    float: left;
+    margin: 8px 0 0 5px;
+    width: 250px;
+    max-height: 70px;
+    overflow: hidden;
+    transition-duration: .5s;
+}
+
+.site-title {
+    font-size: 24px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding: 0 0 2px 0;
+}
+
+#site-nav-wrap {
+    float: right;
+    max-width: 80%;
+}
+
+.nav-menu {
+    float: left;
+}
+.nav-menu, .nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    _float: left;
+}
+#site-nav .down-menu li {
+    display: block;
+    float: left;
+    height: 65px;
+    line-height: 65px;
+    font-size: 16px;
+}
+.nav-menu li {
+    position: relative;
+    white-space: nowrap;
+    *white-space: normal;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+}
+#site-nav .down-menu a {
+    margin: 0 3px;
+    padding: 0 10px;
+    color: #444;
+    text-align: left;
+    transition-duration: .2s;
+    text-transform: uppercase;
+}
+
+#site-nav .down-menu > li > a:hover,
+#site-nav .down-menu > li.sfHover > a {
+	color: #fff !important;
+	background: #3690cf;
+	border-bottom: 1px solid #3690cf;
+	text-decoration: none;
+}
+
+.site-title a:hover {
+	text-decoration: none;
+}
+
+.nav-menu a {
+    display: block;
+    position: relative;
+    zoom: 1;
+}	
+a {
+    color: #444;
+    text-decoration: none;
+}
+.site-description{
+    color: #000;
+    height: 20px;
+    margin: 0 0 0px;
+}
+
+.post-navigation a {
+    font-size: 50px;
+    color: #b6b6b6;
+    text-align: center;
+}
+.meta-nav-r {
+    position: fixed;
+	left: 165px;
+    top: 45%;
+    font-size: 50px !important;
+    width: 50px;
+    z-index: 1;
+}
+.meta-nav-l {
+    position: fixed;
+    right: 0;
+    top: 45%;
+    width: 50px;
+    z-index: 1;
+}
+
+.nav-single a {
+    display: block;
+}
+a:visited {
+    color: #555;
+}
+.meta-nav {
+    background: #fff;
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin-right: -1px;
+    padding: 10px 20px;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 2px;
+}
+
+.meta-nav:hover {
+    color: #fff;
+    background: #3690cf;
+    border: 1px solid #3690cf;
+}
+
+.nav-single {
+	margin-top: 10px;
+}
+
+.main-box {
+    background: #f3f3f3;
+}
+.main-box .main-box-header {
+	background-color: #ffffff;
+}
+.main-box .main-box-body {
+	background-color: #ffffff;
+}
+
+.sContent {
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 1.9;
+    margin-top: 20px;
+}
+
+.sContent h4 {
+    font-size: 16px;
+    font-weight: bolder;
+    text-indent: 2em;
+}
+.sContent p {
+    text-indent: 2em;
+    margin: 0 0 12px 0;
+}
+
+.wp-block-image {
+    max-width: 100%;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+.glyphicon {
+    color: #b6b6b6;
+}
+.glyphicon:hover{
+	color: #555;
+}
+
+.entry-header h1 {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    margin: 35px -20px 0 -20px;
+    padding: 5px 20px;
+    color: #253443;
+}
+
+.wp-block-image img {
+    vertical-align: middle;
+    width: 100%;
+}
+.sContent > .subTitle{
+	font-size: 18px;
+}
+
+#log-box {
+    position: fixed;
+    background: #fff;
+    bottom: 10px;
+    left: -1px;
+    max-width: 260px;
+    padding: 5px 0 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 9999;
+    display: none;
+    animation: fade-in;
+    animation-duration: 0.5s;
+    -webkit-animation: fade-in 0.5s;
+}
+
+#catalog, #catalog a {
+    font-size: 14px;
+    color: #666;
+}
+
+#catalog {
+    height: 210px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#catalog ul {
+    margin: 5px 10px 0 0;
+}
+
+#catalog-ul li {
+    list-style: none;
+    margin: 0;
+    width: 99%;
+    min-width: 150px;
+    line-height: 240%;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.log-zd {
+    position: absolute;
+    background: #3690cf;
+    top: -1px;
+    right: -1px;
+    width: 22px;
+    height: 217px;
+    border-radius: 0 5px 5px 0;
+}
+
+
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		
+		<header class="main-box-header clearfix">
+		  
+		  <div id="menu-box">
+			<div id="top-menu">
+			
+				<div class="logo-sites">
+					<p class="site-title" style=" margin: 0 0 0px;"><a href="###" title="智能电话" rel="home">智能电话</a></p>
+					<p class="site-description">官方使用手册</p>
+				</div><!-- .logo-site -->
+
+				<div id="site-nav-wrap">
+					
+					
+					<nav id="site-nav" class="main-nav">
+						<a href="#sidr-main" id="navigation-toggle" class="bars"><i class="be be-menu"></i></a>
+						<div class="menu-container">
+							<ul id="menuUl" class="down-menu nav-menu">
+								<li id="menu-item" class="menu-item">
+									<a href="#">首页</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">控制台</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">招商管理</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">	
+									<a href="#">任务操作</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">通话管理</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">CRM管理</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">短信管理</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">财务管理</a>
+								</li>
+								
+								<li id="menu-item" class="menu-item">
+									<a href="#">公众号配置</a>
+								</li>
+	
+							</ul>
+							
+						</div>				
+					</nav><!-- #site-nav -->
+					
+				</div><!-- #site-nav-wrap -->
+				
+				<div class="clear"></div>
+			</div><!-- #top-menu -->
+		</div>
+		
+		
+		</header>
+		
+		<nav class="navigation post-navigation" role="navigation">
+			<!--
+			<h2 class="screen-reader-text">文章导航</h2>
+			-->
+			<div class="nav-links">
+				
+				<div class="nav-previous">
+					<a href="#" rel="prev">
+						<span class="meta-nav-r" aria-hidden="true">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						</span>
+					</a>
+				</div>
+			
+				<div class="nav-next">
+					<a href="#" rel="next">
+						<span class="meta-nav-l" aria-hidden="true">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						</span>
+					</a>
+				</div>
+			
+			</div>
+			
+		</nav>
+		
+		
+ 
+		<div class="main-box-body clearfix">
+			
+			<header class="entry-header">
+				<h1 class="entry-title">一、话术管理</h1>	
+				<p style="text-indent: 2em;">话术是由场景节点、流程节点、跳转节点、知识库和意向规则组成，以下分步骤介绍；</p>
+			</header>
+			
+			<div class="sContent">
+				<!-- 1  -->
+				<h4 class="subTitle">1.1 话术</h4>
+				<h4 id="title-0">1.1.1 新建话术</h4>
+				<p>右侧菜单-话术管理</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/newSpeak.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)点击”新建话术”按钮；</p>
+				<p>2)输入话术场景名称；</p>
+				<p>3)选择所属行业；</p>
+				<p>4)选择是否自动打断；是：机器播放中允许客户打断；否：机器人播放完才允许打断；</p>
+				<p>5)单击”确定”按钮；</p>
+				
+				<!--  2  -->
+				<h4 id="title-1">1.1.2 新建话术场景节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/newSceneNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)点击”添加”按钮；</p>
+				<p>2)输入场景节点名称；</p>
+				<p>3)选择场景节点类型；</p>
+				<p>4)单击”确定”按钮；</p>
+				
+				<!--  3  -->
+				<h4>1.1.3 创建流程节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/newProcessNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)拖拽”流程节点”按钮到画布区域</p>
+				<p>2)双击节点区域如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/newProcessNode2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)节点名称：不填写默认为”节点名称” （选填）</p>
+				<p>2)流程标签：机器人播放到播放到该节点标签（选填）</p>
+				<p>3)AI话术：机器人播放的文字内容（必填）</p>
+				<p>4)用户回答：用户回答触发分支节点流利（至少选择一个）</p>
+				<p>5)单击”编辑”图标可以修改该分支的关键词</p>
+				<p>6)增加分支：默认只有5个可以分支，用户根据业务可以增加自定义节点（选填）</p>
+				<p>7)暂停时间：机器人播放完录音时等待用户说话时间默认5000毫秒</p>
+				<p>8)不允许打断：机器人在播放中是否允许用户打断，默认不允许</p>
+				<p>9)指定未回复：等待用户说话超时时机器人播放的录音</p>
+				<p>10)短信通知：播放到该流程节点时，自动发短信给用户</p>
+				<p>11)人工坐席：播放到该流程节点时，转人工坐席</p>
+				
+				<!--  4  -->
+				<h4>1.1.4 创建跳转节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/jumpNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>拖拽”跳转节点”按钮至画面区域</p>
+				<p>双击节点，打下如下截图</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/jumpNode2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<p>1)节点名称：不填写默认为”节点名称” （选填）</p>
+				<p>2)跳转前话术：机器人在触发”下一步”操作前播放的文字内容（选填）</p>
+				<p>3)下一步：播放到该节点要触发的动作：挂机，下一主流程或指定主流程（必填）</p>
+				<p>4)单击”确定”按钮</p>
+				
+				<!--  5  -->
+				<h4>1.1.5 节点分支连接</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/nodeBranchConnet.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)单击”肯定”按钮不松开</p>
+				<p>2)拖拽到下一节点”蓝色实心加点上”</p>
+				
+				<!--  5  -->
+				<h4>1.1.6 上传录音</h4>
+				<p>右键单击节点区域，截图如下：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/uplodeRecording.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p style="color: red;">注：所有节点创建完成记得点保存按钮，截图如下：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/uploadRecording2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<!-- 2 -->
+				<h4>1.2 知识库</h4>
+				<p>用于配置回答用户问题的话术和录音，创建新话术会默认有9条知识库记录，灰色按钮是不允许操作的，如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/knowledgeBase.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<h4>1.2.1 添加知识库</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/addKnowledge.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<p>1)节点名称：不填写默认为”节点名称” （选填）</p>
+				<p>2)问答标签：机器人回答该问题时的标签（选填）</p>
+				<p>3)问答类型：分普通和用户未说话（用于流程节点指定未回答）</p>
+				<p>4)关键字：用户说话包含的关键字多个用英文逗号”,”分隔</p>
+				<p>5)添加条件：单击可能添加一条机器人话术，一个知识可以添加多条个不同话术</p>
+				<p>6)机器人文字：匹配到该知识库关键字时机器人回答的文字</p>
+				<p>7)删除图标： 删除一条话术文字</p>
+				<p>8)动作：挂机、下一场景节点、指定场景节点、返回当前场景节点、等待用户响应</p>
+				<p>9)意向等级：触发该知识时标记用户的意向等级</p>
+				<p>10)暂停时间：机器人播放完录音时等待用户说话时间默认5000毫秒</p>
+				<p>11)与流程节点相同不在重复介绍</p>
+				
+				<h4>1.2.2 上传录音</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/uploadaudio.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<h4>1.2.3 知识库搜索</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/searchaudio.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<h4>1.2.4 修改排序</h4>
+				
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/editSort.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<h4>1.3 意向规则 </h4>
+				<p>1)用于判断拨打客户号码效果等级规则，界面如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/intentionRule.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>创建话术同时会创建14条默认意向规则，可以根据自己的话术场景调整适合自己的意向规则。</p>
+				
+				<h4>1.4 问题学习 </h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/problemLearning.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)可以根据状态筛选问题学习的内容</p>
+				<p>2)可以按出现次数排序</p>
+								
+			
+			</div>
+			
+			
+			<header class="entry-header">
+				<h1 class="entry-title">二、公众号配置</h1>	
+				<p style="text-indent: 2em;">配置公众号用于实时将意向客户信息通过公众号模板消息推送给员工，配置要求：认证的服务号</p>
+			</header>
+			<div class="sContent">
+				
+				<h4>1.1配置公众号</h4>
+				<!--<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/newSceneNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)点击”添加”按钮；</p>
+				<p>2)输入场景节点名称；</p>
+				<p>3)选择场景节点类型；</p>
+				<p>4)单击”确定”按钮；</p>-->
+			</div>
+			
+		</div>
+		
+		
+		<nav class="nav-single">
+			
+			<a href="#" rel="prev">
+				<span class="meta-nav">
+					<span class="post-nav">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 上一篇
+					</span>
+					<br>6、通话管理
+				</span>
+			</a>
+			
+			<a href="#" rel="next">
+				<span class="meta-nav">
+					<span class="post-nav">下一篇
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</span>
+					<br>8、短信管理
+				</span>
+			</a>					
+			<div class="clear"></div>
+				
+		</nav>
+		
+		
+		<!--<div id="log-box" style="display: block;">
+			<div id="catalog">
+				<ul id="catalog-ul">
+					<li><i class="be be-arrowright"></i> <a href="#title-0">新建话术</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-1">新建话术场景节点 </a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-2" title="3.3 充值管理">3.3 充值管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-3" title="3.4 机器人管理">3.4 机器人管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-4" title="3.5 线路管理">3.5 线路管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-5" title="3.6 ASR管理">3.6 ASR管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-6" title="3.7 短信通道管理">3.7 短信通道管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-7" title="3.8 资费管理">3.8 资费管理</a></li>
+					<li><i class="be be-arrowright"></i> <a href="#title-8" title="3.9 操作记录">3.9 操作记录</a></li>
+				</ul>
+				<span class="log-zd">
+					<span class="log-close">
+						<a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a>
+					</span>
+				</span>
+			</div>
+			
+		</div>-->
+					
+	</div>					
+    
+</div>
+
+ <script type="text/javascript">
+ 
+
+
+ </script>
+  
+</div>
+
+
+
+
+{/block}
+

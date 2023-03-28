@@ -1,0 +1,337 @@
+{extend name="public/base" /}
+{block name="body"}
+<style type="text/css">
+.table tbody>tr>td {
+	padding: 6px 8px;
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+}
+#newModal > .modal-dialog {
+    width: 450px;
+    margin: 30px auto;
+}
+
+.textwidth{
+	width:250px;
+}
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			  <h1><i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-dianziqianmingx"></i>短信签名</h1>
+				<a class="btn btn-primary" href="javascript:void(0);" onclick="addNew(0);">添加签名</a>
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+		
+			<section class="navbar navbar-default main-box-header clearfix">
+				<div  class="pull-right">
+					 <form class="form-inline"  method="get" role="form">
+						 
+						<div class="form-group">
+							<label>签名：</label>
+							<input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入签名.....">
+						</div>
+						<button class="btn btn-primary" type="submit">搜索</button>
+					</form>
+				</div>
+		  </section>
+
+		     <div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+		     
+			  <div class="table-responsive">
+			  
+				 <table class="table table-bordered table-hover">
+				   <thead>
+					    <tr>
+					        <th class="text-center"></th>
+									
+									<th class="text-center">签名ID</th>	
+									<th class="text-center">签名内容</th>	
+								
+									<th class="text-center">创建时间</th>	
+									<th class="text-center">审核状态	</th>	
+					        <th class="text-center">操作</th> 
+					    </tr>
+				    </thead>
+				   <tbody>
+				   
+							{volist name="list" id="list"}
+								<tr>
+								 <td class="text-center">
+										<input type="checkbox" name="roleids" class="rolecheck" value="{$list.id|default=""}"/>
+								 </td>
+									
+									<td class="text-center">{$list.id|default=""}</td>
+									<td class="text-center">{$list.name|default=""}</td>
+									
+									<td class="text-center">{$list.create_time|default=""}</td>
+									<td class="text-center">
+									{eq name="isSuper" value="1"}
+										{switch name="$list.status" }
+												{case value="1"}
+													<a href="javascript:void(0);" onclick="setstatus({$list.id},0);">通过</a>
+												{/case}
+												{default /}
+													<a href="javascript:void(0);" onclick="setstatus({$list.id},1);">审核中</a>
+												
+										{/switch}
+									{else/}
+									
+										{switch name="$list.status" }
+											{case value="1"}通过{/case}
+											{default /}审核中
+										{/switch}
+									
+									{/eq}
+										
+									</td>
+									
+									<td class="text-center">
+										{switch name="$list.status" }
+											{case value="1"}编辑{/case}
+											{default /}
+											 <a href="javascript:void(0);" onclick="addNew({$list.id|default=""});">编辑</a>
+										{/switch}
+											<a href="javascript:void(0);" onclick="delRole({$list.id|default=""});">删除</a>	
+									</td>
+								</tr>  
+				     {/volist}
+		          
+				    </tbody>
+				  </table>
+				
+					<div class="row">
+							<div class="col-sm-4 text-left"></div>
+							<div class="col-sm-8 text-right">{$page}</div>
+					</div>
+						
+			  </div>
+		
+				<footer class="main-box-footer clearfix">
+					<div class="pull-left">
+							<input class="check-all" onclick="allcheck();" type="checkbox"/>全选
+						<button class="btn btn-primary" onclick="delRole(0);" target-form="ids">删 除</button>
+					</div>
+				</footer>
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+ 
+ $(function(){
+		var keyword = "{$_GET['keyword']|default=''}";
+		$('#keyword').val(keyword);
+})
+ 
+	//设置状态
+	function setstatus(id,status){			
+			var url = "{:url('setSignStatus')}";	
+			$.ajax({
+						url : url,
+						dataType : "json", 
+						type : "post",
+						data : {'sId':id,'status':status},
+						success: function(data){
+							if (data.code) { 
+							alert(data.msg);
+					}else{
+							location.reload();
+					}
+						},
+						error : function() {
+							alert('失败。');
+						}
+			});
+	}
+	
+	
+	
+//删除角色
+ function delRole(id){
+    var r=confirm('确认删除?');
+     	if (!r) 
+           return; 
+     	   var ids;
+ 	    	if(id){
+ 	    		var Ids=[];
+ 	    		Ids.push(id);
+ 	    		ids = Ids;
+ 	    	}else{
+ 	    		 var IdsVal = [];
+ 	        	 var roleids = document.getElementsByName("roleids");
+ 	    		 for ( var j = 0; j < roleids.length; j++) {
+ 	    		    if (roleids.item(j).checked == true) {
+ 	    		    	IdsVal.push(roleids.item(j).value);
+ 	    		    }
+ 	    		 }
+ 	    		 ids = IdsVal;
+ 	    	}
+ 		
+ 	    	if(!ids.length){
+ 	    		alert("至少选择一条。");
+ 	    		 return false; 
+ 	    	}
+ 	    	
+     		 $.post("{:url('delSign')}",{'ids':ids},function(data){
+     			if (data.code) {
+		    		 alert(data.msg);
+		    	}else{
+		    		 location.reload();
+		    	}
+ 				
+ 			}); 
+     
+
+ }
+//全选
+ function allcheck(){			
+ 	if ($('.check-all').is(":checked")) {	
+ 		$('.rolecheck').prop("checked","checked");
+ 	}else{
+ 		$('.rolecheck').prop("checked",false);
+ 	}
+
+ }
+  
+ </script>
+  
+</div>
+
+
+<!-- 新建短信签名 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								 <span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">添加短信签名</h4>
+				 </div>
+				 <div class="modal-body">
+						  <form id="form" method="post" class="form-horizontal" enctype="multipart/form-data" method="post">
+						      
+				
+									<div class="form-group">
+										<label class="col-lg-3 control-label">短信签名：</label>
+										<div class="col-lg-9 col-sm-9">
+											 <input type="text" class="form-control textwidth" placeholder="请输入短信签名" name="autograph" id="autograph" value="" />
+										</div>
+									</div>
+										
+		
+									
+				          <input type="hidden" name="signid" id="signid" value="" />
+ 
+							</form>
+				  <br/>
+				 </div>
+				 <div style="clear:both;"></div>
+				<div class="modal-footer neweditbtn">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" onclick="uploadData();" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+						 
+			</div>
+		 
+    <script type="text/javascript">
+
+	     //保存页面
+		 function addNew(uid){	
+			 $("#signid").val(uid);
+			 
+			 if(uid > 0){
+
+				 		$.ajax({
+				 				type: "POST",
+				 				dataType:'json',
+				 				url: "{:url('User/Sms/getSign')}",
+				 				cache: false,
+				 				data: {id:uid},
+				 				success: function(data) {
+			
+									if (data.code == 0) {
+										  var data = data.data;
+											$("#autograph").val(data.name);
+                      $('#newModal').modal('show');
+									}
+									
+ 				 				},
+				 				error: function(data) {
+				 					alert("提交失败");
+				 				}
+				 		}) 
+				 		
+				 
+			 }
+			 else{
+				 
+				 $("#autograph").val("");
+
+				 $('#newModal').modal('show');
+
+			 }
+			
+		 }	
+		 
+		 
+		 function uploadData(){
+		 	
+		 		var autograph = $("#autograph").val();
+		 		if(!autograph){
+		 			alert("短信签名不能为空"); 
+		 			return false; 
+		 		}
+		 	
+
+				var href = "{:url('User/Sms/signature')}";
+				
+
+		 		 $.ajax({
+		 		     type: "POST",
+		 		     dataType:'json',
+		 		     url: href,
+		 		     cache: false,
+		 		     data: $("#form").serialize(),
+		 		     success: function(data) {
+							
+		 		    	if (data.code == 0) {
+		 		    	     alert(data.msg + ' 页面即将自动刷新~');
+		 		    	 
+		 		    	}else{
+		 		    		 alert(data.msg);
+		 		    		
+		 		    	}
+							
+							location.reload();
+							
+		 		     },
+		 		     error: function(data) {
+		 		    	 alert("提交失败");
+		 		     }
+		 		 }) 
+		 		 
+		   $('#newModal').modal('hide');
+
+		 }
+		 		 
+    </script>
+      
+</div>
+
+
+{/block}
+

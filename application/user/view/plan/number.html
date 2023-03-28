@@ -1,0 +1,231 @@
+{extend name="public/base" /}
+{block name="body"}
+
+<style type="text/css">
+.table tbody>tr>td {
+   padding: 6px 8px;
+}
+.table-responsive {
+min-height: .01%;
+overflow-x: hidden;
+}
+
+.messageinfo{
+ text-align:right;
+ 
+}
+.infotable tr td{
+ padding:5px;
+}
+.textwidth{
+	width:250px;
+}
+
+</style>
+
+<link href="__PUBLIC__/plugs/datepicker/css/foundation-datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.js"></script>
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.zh-CN.js"></script>
+
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+				<h1>号码管理</h1>
+			
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+			
+		  <section class="navbar navbar-default main-box-header clearfix">
+	         <div class="pull-right">
+			   <div class="form-inline">
+			     
+				     <div class="form-group">
+					   <button class="btn btn-primary" type="button" onclick="delfun('no');">删除未呼叫号码</button>
+					  </div>&nbsp;
+				
+					  <div class="form-group">
+					  	 <button class="btn btn-primary" type="button" onclick="delfun('all');">删除所有号码</button>
+					  </div>&nbsp;&nbsp;
+					  
+					 <div class="form-group"> 
+				      	<button class="btn btn-primary" type="button" onclick="outexcel('already');">导出已呼出号码</button>   
+			         </div>&nbsp;&nbsp;
+			         
+			         <div class="form-group"> 
+				        <button class="btn btn-primary" type="button" onclick="outexcel('no');">导出未呼出号码</button>
+			         </div>&nbsp;&nbsp;
+			
+			  </div>
+			 </div>
+		   </section>
+
+		    
+			<div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+			<div class="table-responsive">
+			
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							
+							<th class="text-center"></th>
+							<th class="text-center">所属用户</th>
+							<th class="text-center">号码</th>						
+							<th class="text-center">状态</th>
+							<th class="text-center">操作</th> 
+							
+						</tr>
+					</thead>
+					<tbody>
+						{volist  name="list" id="vo"}
+				
+							<tr>
+								<td class="text-center">
+									<input type="checkbox" name="customerIds" class="customerIds" value="{$vo.uid}"/>
+								</td>
+								<td class="text-center">
+									{$vo.ownerName}
+								</td>
+								<td class="text-center">{$vo.mobile}</td>
+								
+								<td class="text-center">
+								
+									{switch name="$vo.status" }
+										{case value="0"}
+											未拨打
+										{/case}
+										{case value="1"}
+											拨打排队中
+										{/case}
+										{case value="2"}
+											已接通
+										{/case}
+										{default /}
+											未接听挂断/关机/欠费	
+									{/switch}
+								
+								</td>
+								
+								<td class="text-center">								
+									<a href="javascript:void(0);" onclick="delNum({$vo.uid});">删除</a>
+								</td>
+															
+								
+							</tr>
+				
+						{/volist}
+					</tbody>
+				</table>
+				
+				<div class="row">
+					<div class="col-sm-4 text-left">
+						<div class="pull-left">
+							<input class="check-all" onclick="allcheck();" type="checkbox"/>全选
+							<button class="btn btn-primary" onclick="delNum(0);" target-form="ids">删 除</button>
+						</div>			
+					</div>
+					<div class="col-sm-8 text-right">{$page}</div>
+				</div>
+					
+			</div>
+				     
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+  //全选
+  function allcheck(){			
+  	if ($('.check-all').is(":checked")) {	
+  		$('.customerIds').prop("checked","checked");
+  	}else{
+  		$('.customerIds').prop("checked",false);
+  	}
+  }
+  
+ //删除
+ function delNum(id){
+ 
+ 	 var r=confirm('确认删除?');
+     	if (!r) 
+           return; 
+
+     	 var ids=[];
+    	if(id){
+    		ids.push(id);
+    	}else{
+    		
+        	 var roleids = document.getElementsByName("customerIds");
+    		 for ( var j = 0; j < roleids.length; j++) {
+    		    if (roleids.item(j).checked == true) {
+    		    	ids.push(roleids.item(j).value);
+    		    }
+    		 }
+    	}
+		
+    	if(!ids.length){
+    		alert("至少选择一条。");
+    		 return false; 
+    	}
+  		 $.post("{:url('delNum')}",{'id':ids},function(data){
+				if(data.code){
+					alert(data.msg);
+				}else{
+					window.location.href=window.location.href;
+				}
+		},'JSON'); 
+ }
+
+
+ //删除
+ function delfun(type){
+ 
+ 	var r=confirm('确认删除?');
+     	if (!r) 
+           return; 
+
+	$.post("{:url('delType')}",{'type':type},function(data){
+		if(data.code){
+			alert(data.msg);
+		}else{
+			window.location.href=window.location.href;
+		}
+	},'JSON'); 
+	
+ }
+
+
+//导出记录
+function outexcel(type){
+
+	$.post("{:url('exportRecord')}",{'type':type},function(data){
+		//console.log(data);
+		if(data.code == 0){
+			window.location.href = data.data;
+		}else{
+			alert(data.msg)
+		}
+		
+
+	}); 
+	
+} 
+
+ 
+ </script>
+  
+</div>
+
+
+
+
+{/block}
+

@@ -1,0 +1,403 @@
+{extend name="public/base" /}
+{block name="body"}
+
+<link href="__PUBLIC__/plugs/datepicker/css/foundation-datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.js"></script>
+<script src="__PUBLIC__/plugs/datepicker/js/foundation-datepicker.zh-CN.js"></script>
+
+<style type="text/css">
+	.table tbody>tr>td {
+	padding: 6px 8px;
+	}
+	.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+	}
+
+	.messageinfo{
+	 text-align:right;
+	 
+	}
+	.infotable tr td{
+	 padding:5px;
+	}
+
+	.textwidth{
+		width:250px;
+	}
+/* 	.form-group > label{
+		min-width: 105px;
+	} */
+	.form-group > .col-lg-10 {
+			width: 80.333333%;
+	}
+	.field-status{
+			float: left;
+	}
+
+	.modal-footer {
+			text-align: center;
+	}
+	.form-group {
+			margin-bottom: 10px;
+	 }
+
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			  <h1>
+			  	<i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-zuoxi1"></i>
+			    机器人管理
+			  </h1>
+		
+		  </div>
+		</header>
+ 
+		<div class="main-box-body clearfix">
+		
+	        <section class="navbar navbar-default main-box-header clearfix">
+		         <div  class="pull-right">
+				   <form class="form-inline"  method="get" role="form">
+				   	
+				   	  <div class="form-group">
+					    <label>用户类型 ：</label>
+					    <select class="form-control" name="userType" id="userType">
+				            <option value="">显示全部</option>
+				            <option value="1">销售人员</option>
+				            <option value="2">商家</option>
+				            <option value="3">代理商</option>
+				            <option value="4">运营商</option>
+					    </select>
+					  </div>
+				   	
+				      &nbsp;&nbsp;&nbsp;
+					  <div class="form-group">
+					    <label>用户名 ：</label>
+					    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入用户名">
+					  </div>
+				    <button class="btn btn-primary" type="submit">搜索</button>
+				  </form>
+				 </div>
+		    </section>
+
+		    <div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+		     
+			<div class="table-responsive">
+			  
+				 <table class="table table-bordered table-hover">
+				   <thead>
+					    <tr>
+							<th class="text-center">序号	</th>
+							<th class="text-center">用户名</th>							
+							<th class="text-center">用户类型</th>
+							
+							<th class="text-center">机器人数</th>
+							
+							<th class="text-center">到期时间</th>
+							<th class="text-center">备注</th> 						
+							<th class="text-center">操作</th> 
+							
+					    </tr>
+				    </thead>
+				   <tbody>
+				      {volist name="list" id="vo" key="k" }
+					    <tr>
+							<td class="text-center">{$k}</td>
+							<td class="text-center">{$vo.username}</td>
+							
+							<td class="text-center">{$vo.role_name}</td>
+							
+							<td class="text-center">{$vo.robot_cnt}</td>
+							
+							<td class="text-center">{$vo.expiry_date}</td>
+							
+							<td class="text-center"> 
+								{$vo.remark}
+							</td>
+							
+							
+							<td class="text-center"> 
+								
+								<a href="javascript:void(0);" onclick="editRobot({$vo.id});">编辑</a>
+								<a href="javascript:void(0);" onclick="recovery({$vo.id});">强制回收</a>	
+								
+							</td>
+							
+						
+						</tr>
+				       {/volist}
+				    </tbody>
+				  </table>
+				 <div class="row">
+					<div class="col-sm-4 text-left">
+						 <div class="pull-left"></div>	
+					</div>
+					<div class="col-sm-8 text-right">{$page}</div>
+				 </div>
+			  </div>
+			  
+			
+		</div>
+					
+	</div>					
+    
+</div>
+
+ <script type="text/javascript">
+ 	
+	 
+//删除Items
+ function recovery(id){
+ 	
+    var r=confirm('确认回收?');
+     	if (!r) 
+           return; 
+  	
+	$.post("{:url('recovery')}",{'adminId':id},function(data){
+		if (data.code) {
+    		alert(data.msg);
+    	}else{
+    		location.reload();
+    	} 				
+	}); 
+     
+
+ } 	
+ 
+ $(function(){
+ 	
+	var keyword = "{$_GET['keyword']|default=''}";
+	$('#keyword').val(keyword);
+	
+	var userType = "{$_GET['userType']|default=''}";
+	$('#userType').val(userType);
+	
+	
+	$.post("{:url('backtype')}",{},function(data){
+		
+		
+		if(data.code==0){
+						
+			var list = data.data;
+			var lon = list.length;
+			
+			if(lon){
+				
+				$("#userType").find("option").remove();
+				var str='<option value="">显示全部</option>';
+				
+				for(var i=0;i<lon;i++){
+					
+					str += '<option value="'+list[i]["id"]+'">'+list[i]["name"]+'</option>';
+		
+				}
+											
+				$("#userType").append(str); 
+										
+			}
+			else{
+				alert('该类没有数据。');
+			}
+			
+		}
+		else{
+			alert(data.msg);
+		}
+		
+		
+	}); 
+     
+	
+})
+
+ </script>
+  
+</div>
+
+
+
+
+<!-- 编辑机器人 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+
+	<div class="modal-dialog">
+		
+		<div class="modal-content">
+			
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					 <span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">新建(编辑)会员</h4>
+			 </div>
+			 
+			 <div class="modal-body">
+			 	
+				<form id="form" method="post" class="form-horizontal" enctype="multipart/form-data" method="post">
+				      
+					<div class="form-group">
+						<label class="col-lg-3 control-label">用户名：</label>
+						<div class="col-lg-9 col-sm-9" id="userName"></div>
+					</div>
+					
+					<div class="form-group" id="pwgroup">
+						<label class="col-lg-3 control-label">用户类型：</label>
+						<div class="col-lg-9 col-sm-9" id="userTypetext"></div>
+					</div>         
+					 
+					<div class="form-group">
+						<label class="col-lg-3 control-label">当前可用机器人数量：</label>
+						<div class="col-lg-9 col-sm-9" id="robotNum"></div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label"><span style="color: red;">*</span>分配机器人数量：</label>
+						<div class="col-lg-9 col-sm-9">
+						 <input type="text" id="allocate" name="allocate" class="form-control textwidth" placeholder="请输入分配机器人数量"  />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label">到期时间：</label>
+						<div class="col-lg-9 col-sm-9">
+							<input type="text" class="form-control textwidth" placeholder="请选择到期时间" id="dueTime" name="dueTime" value="" readonly="">
+							<script>
+								$('#dueTime').fdatepicker({
+									format: 'yyyy-mm-dd',
+									pickTime: true
+								});
+							</script>	
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-3 control-label">联系邮箱：</label>
+						<div class="col-lg-9 col-sm-9">
+							 <textarea class="form-control textwidth" placeholder="请输入备注...." name="remark" id="remark"></textarea>
+						</div>
+					</div>
+						
+		          	<input type="hidden" name="adminId" id="mumid" value="" />
+		
+				</form>
+	  			<br/>
+			 </div>
+			 
+			<div style="clear:both;"></div>
+			
+			<div class="modal-footer">				
+				<button type="button" onclick="uploadData();" class="btn btn-primary">保存</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+			
+		</div>
+					 
+	</div>
+	 
+    <script type="text/javascript">
+
+	     //保存页面
+		 function editRobot(uid){	
+		 	
+			$("#mumid").val(uid);
+		
+	 		$.ajax({
+ 				type: "POST",
+ 				dataType:'json',
+ 				url: "{:url('User/Manager/getadmin')}",
+ 				cache: false,
+ 				data: {id:uid},
+ 				success: function(data) {
+					
+					if (data.code == 0) {
+						
+					    var data = data.data;
+						$("#userName").text(data.username);
+						
+						$("#userTypetext").text(data.utype);
+						
+  						$("#robotNum").text(data.robot_cnt);
+  						
+						$("#dueTime").val(data.expiry_date);
+						
+						$("#remark").val(data.remark);
+					
+ 						$('#newModal').modal('show'); 
+
+					}
+					
+ 				},
+ 				error: function(data) {
+ 					alert("提交失败");
+ 				}
+	 		}) 
+	 	 
+
+		 }	
+		 
+		 
+		 function uploadData(){
+		 
+	 		var allocate = $("#allocate").val();
+	 		if(!allocate){
+	 			alert("分配机器人数量不能为空"); 
+	 			return false; 
+	 		}
+	
+	 		if(isNaN(allocate)){
+	 			alert("分配机器人数量必须得是数字。"); 
+	 			return false; 
+	 		}
+	 	
+			var mumid = $("#mumid").val();
+			if(mumid > 0){
+				
+				 href = "{:url('User/Manager/editRobot')}";
+				 
+			 }
+			else{
+				
+				 alert("用户Id不正确"); 
+				 return false; 
+
+			 }
+	
+
+	 		$.ajax({
+	 		     type: "POST",
+	 		     dataType:'json',
+	 		     url: href,
+	 		     cache: false,
+	 		     data: $("#form").serialize(),
+	 		     success: function(data) {
+	 
+	 		    	if (data.code == 0) {
+	 		    	    alert(data.msg + ' 页面即将自动刷新~');
+	 		    	 	location.reload();
+	 		    	}else{
+	 		    		alert(data.msg);
+	 		    		
+	 		    	}
+				
+	 		     },
+	 		     error: function(data) {
+	 		    	 alert("提交失败");
+	 		     }
+	 		 }) 
+	 		 
+	  		$('#newModal').modal('hide');
+
+		 }
+		 
+		 
+    </script>
+      
+</div>
+
+ 
+{/block}
+

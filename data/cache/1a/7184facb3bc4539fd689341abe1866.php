@@ -1,0 +1,3 @@
+<?php
+//000000000000a:21:{s:2:"id";i:84;s:9:"member_id";i:5555;s:5:"level";N;s:9:"push_type";i:0;s:8:"sale_ids";N;s:7:"task_id";i:1387;s:9:"task_name";s:9:"于海洋";s:12:"scenarios_id";i:557;s:21:"destination_extension";i:1900001;s:6:"bridge";s:1:"0";s:11:"call_prefix";s:3:"909";s:6:"status";i:1;s:9:"call_type";i:1;s:5:"phone";s:4:"0910";s:9:"robot_cnt";i:1;s:11:"create_time";i:1568083400;s:11:"update_time";i:1568083557;s:12:"asr_api_path";N;s:7:"line_id";i:20;s:4:"type";i:0;s:6:"remark";N;}
+?>

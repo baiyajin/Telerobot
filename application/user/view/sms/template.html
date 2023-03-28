@@ -1,0 +1,491 @@
+{extend name="public/base" /}
+{block name="body"}
+<style type="text/css">
+.table tbody>tr>td {
+		padding: 6px 8px;
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+}
+#newModal > .modal-dialog {
+    width: 450px;
+    margin: 30px auto;
+}
+
+.textwidth{
+	width:250px;
+}
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			  <h1><i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-moban"></i>短信模板</h1>
+				<a class="btn btn-primary" href="javascript:void(0);" onclick="addNew(0);">添加模板</a>
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+		
+	      <section class="navbar navbar-default main-box-header clearfix">
+						 <div  class="pull-right">
+							 <form class="form-inline"  method="get" role="form">
+								 
+								<div class="form-group">
+									<label>模板名：</label>
+									<input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入模板名.....">
+								</div>
+								<button class="btn btn-primary" type="submit">搜索</button>
+							</form>
+						</div>
+				</section>
+		
+		     <div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+		     
+			  <div class="table-responsive">
+			  
+				 <table class="table table-bordered table-hover">
+				   <thead>
+					    <tr>
+								<th class="text-center"></th>
+								<th class="text-center">模板ID</th>	
+								<th class="text-center">模板名称	</th>
+								<th class="text-center">模板内容</th>
+								<th class="text-center">模板类型	</th>	
+								<th class="text-center">关联签名</th>	
+								<th class="text-center">创建时间	</th>
+								<th class="text-center">审核状态	</th>	
+								<th class="text-center">操作</th> 
+					    </tr>
+				    </thead>
+				   <tbody>
+				   
+							{volist name="list" id="vo"}
+							
+								<tr>
+								 <td class="text-center">
+										<input type="checkbox" name="roleids" class="rolecheck" value="{$vo.id|default=""}"/>
+								 </td>
+									<td class="text-center">{$vo.id|default=""}</td>
+									<td class="text-center">{$vo.name|default=""}</td>
+									
+									<td class="text-center">{$vo.conent|default=""}</td>
+									<td class="text-center">
+										{switch name="$vo.type" }
+											{case value="1"}通知{/case}
+											{case value="2"}推广{/case}
+											{default /}验证码
+										{/switch}
+									</td>
+									<td class="text-center">{$vo.signName|default=""}</td>
+									
+									<td class="text-center">{$vo.create_time|default=""}</td>
+									<td class="text-center">
+										{eq name="isSuper" value="1"}
+											{switch name="$vo.status" }
+												{case value="1"}
+													<a href="javascript:void(0);" onclick="setstatus({$vo.id},0);">通过</a>
+												{/case}
+												{default /}
+													<a href="javascript:void(0);" onclick="setstatus({$vo.id},1);">审核中</a>
+											{/switch}
+										{else/}
+										
+											{switch name="$vo.status" }
+												{case value="1"}通过{/case}
+												{default /}审核中
+											{/switch}
+										
+										{/eq}
+										
+									</td>
+							
+									<td class="text-center">
+										{switch name="$vo.status" }
+											{case value="1"}编辑{/case}
+											{default /}
+											<a href="javascript:void(0);" onclick="addNew({$vo.id|default=""});">编辑</a>
+										{/switch}
+										  
+											<a href="javascript:void(0);" onclick="delRole({$vo.id|default=""});">删除</a>	
+									</td>
+								</tr>  
+				     
+		          {/volist}
+
+				    </tbody>
+				  </table>
+				    <div class="row">
+								<div class="col-sm-4 text-left"></div>
+								<div class="col-sm-8 text-right">{$page}</div>
+						</div>
+			  </div>
+		
+				<footer class="main-box-footer clearfix">
+					<div class="pull-left">
+							<input class="check-all" onclick="allcheck();" type="checkbox"/>全选
+						<button class="btn btn-primary" onclick="delRole(0);" target-form="ids">删 除</button>
+					</div>
+				</footer>
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+ 
+ $(function(){
+		var keyword = "{$_GET['keyword']|default=''}";
+		$('#keyword').val(keyword);
+})
+ 
+ //设置状态
+ function setstatus(id,status){			
+ 		var url = "{:url('setTplStatus')}";	
+ 		$.ajax({
+ 					url : url,
+ 					dataType : "json", 
+ 					type : "post",
+ 					data : {'sId':id,'status':status},
+ 					success: function(data){
+ 						if (data.code) { 
+ 						alert(data.msg);
+ 				}else{
+ 						location.reload();
+ 				}
+ 					},
+ 					error : function() {
+ 						alert('失败。');
+ 					}
+ 		});
+ }
+ 
+
+//删除模板
+ function delRole(id){
+    var r=confirm('确认删除?');
+     	if (!r) 
+           return; 
+     	   var ids;
+ 	    	if(id){
+ 	    		var Ids=[];
+ 	    		Ids.push(id);
+ 	    		ids = Ids;
+ 	    	}else{
+ 	    		 var IdsVal = [];
+ 	        	 var roleids = document.getElementsByName("roleids");
+ 	    		 for ( var j = 0; j < roleids.length; j++) {
+ 	    		    if (roleids.item(j).checked == true) {
+ 	    		    	IdsVal.push(roleids.item(j).value);
+ 	    		    }
+ 	    		 }
+ 	    		 ids = IdsVal;
+ 	    	}
+ 		
+ 	    	if(!ids.length){
+ 	    		alert("至少选择一条。");
+ 	    		 return false; 
+ 	    	}
+ 	    	
+     		 $.post("{:url('delTpl')}",{'ids':ids},function(data){
+     			if (data.code) {
+		    		 alert(data.msg);
+		    	}else{
+		    		 location.reload();
+		    	}
+ 				
+ 			}); 
+     
+
+ }
+//全选
+ function allcheck(){			
+ 	if ($('.check-all').is(":checked")) {	
+ 		$('.rolecheck').prop("checked","checked");
+ 	}else{
+ 		$('.rolecheck').prop("checked",false);
+ 	}
+
+ }
+  
+ </script>
+  
+</div>
+
+
+<!-- 新建(编辑)短信模板 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								 <span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">添加短信模板</h4>
+				  </div>
+				  <div class="modal-body">
+						  <form id="form" method="post" class="form-horizontal" enctype="multipart/form-data" method="post">
+								
+								  <div class="form-group">
+								  	<label class="col-lg-3 control-label">关联通道：</label>
+								  	<div class="col-lg-9 col-sm-9">
+								  		<select id="tplChannel" name="tplChannel" onchange="getprice(this,'c');" class="form-control textwidth">
+								  			<option value=" ">请选择</option>
+								  			{volist name="channellist" id="cvo"}
+								  				<option value="{$cvo.id|default=""}">{$cvo.name|default=""}</option>
+								  			{/volist}
+								  		</select>
+								  	</div>
+								  </div>
+
+									<div class="form-group">
+										<label class="col-lg-3 control-label">关联签名：</label>
+										<div class="col-lg-9 col-sm-9">
+									     <select id="tplSign" name="tplSign" class="form-control textwidth">
+                        <option value=" ">请选择</option>
+												{volist name="signlist" id="vo"}
+                          <option value="{$vo.id|default=""}">{$vo.name|default=""}</option>
+												{/volist}
+											 </select>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">模板类型：</label>
+										<div class="col-lg-9 col-sm-9">
+											<select id="tplType" name="tplType" onchange="getprice(this,'t');" class="form-control textwidth">
+                        <option value="">请选择</option>
+                        <option value="0">验证码类</option>
+                        <option value="1">通知类</option>
+                        <option value="2">营销类</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">模板名称：</label>
+										<div class="col-lg-9 col-sm-9">
+											<input type="text" class="form-control textwidth" placeholder="请输入模板名称" name="tplName" id="tplName" value="" />
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">模板价格：</label>
+										<div class="col-lg-9 col-sm-9">
+											<input type="number" min="0" style="width:235px;" readonly="readonly" class="form-control pull-left" placeholder="请输入模板价格" name="tplPrice" id="tplPrice" value="" />
+											<span style="line-height: 40px;margin-left: 5px;">元</span>
+										</div>
+									</div>
+										
+									<div class="form-group">
+										<label class="col-lg-3 control-label">模板内容：</label>
+										<div class="col-lg-9 col-sm-9">
+											 <textarea name="templateInfo" id="templateInfo" style="width: 90%;"></textarea>
+											 <span style="line-height: 40px;margin-left: 5px;">验证码标签：[code]</span>
+										</div>
+		
+									</div>
+									
+				          <input type="hidden" name="tplId" id="tplId" value="" />
+ 
+							</form>
+				  <br/>
+				 </div>
+				 <div style="clear:both;"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" onclick="uploadData();" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+						 
+			</div>
+		 
+    <script type="text/javascript">
+			
+
+			var pc = 0,pt = null;
+			
+			function getprice(obj, type){
+				
+				if(type == "c"){
+					 pc = $(obj).val();
+				}
+				else if(type == "t"){
+				
+					if($(obj).val() == ""){
+						pt = null;
+					}else{
+						pt = $(obj).val();
+					}
+				}
+				
+			
+						{volist name="channellist" id="vo"}
+				
+							if({$vo.id} == pc){
+							
+								if(pt==0){
+									console.log("0");
+									$("#tplPrice").val('{$vo.price.codePrice}');
+								}else if(pt==1){
+									console.log("1");
+									$("#tplPrice").val('{$vo.price.noticePrice}');
+								}else if(pt==2){
+									console.log("2");
+									$("#tplPrice").val('{$vo.price.marketingPrice}');
+								}else{
+									console.log("null");
+									$("#tplPrice").val("");
+								}
+								
+							}
+		
+						{/volist}
+
+
+			}
+
+	   //保存页面
+		 function addNew(uid){	
+			 $("#tplId").val(uid);
+			 
+			 if(uid > 0){
+
+				 		$.ajax({
+				 				type: "POST",
+				 				dataType:'json',
+				 				url: "{:url('User/Sms/getTemplate')}",
+				 				cache: false,
+				 				data: {id:uid},
+				 				success: function(data) {
+									
+									if (data.code == 0) {
+										
+										  var data = data.data;
+											$("#tplChannel").val(data.channel_id);
+											$("#tplSign").val(data.sign_id);
+											$("#tplType").val(data.type);
+											$("#tplName").val(data.name);
+											$("#tplPrice").val(data.price);
+											$("#templateInfo").val(data.conent);
+                    
+                      $('#newModal').modal('show');
+
+									}
+									
+ 				 				},
+				 				error: function(data) {
+				 					alert("获取数据失败");
+				 				}
+				 		}) 
+				 		
+				 
+			 }
+			 else{
+				 
+				 $("#tplChannel").val(" ");
+				 $("#tplSign").val(" ");
+				 $("#tplType").val("");
+				 $("#tplName").val("");
+				 $("#tplPrice").val("");
+				 $("#templateInfo").val("");
+				 $('#newModal').modal('show');
+
+			 }
+			
+		 }	
+		 
+		 
+		 function uploadData(){
+		 	
+		 		var tplChannel = $("#tplChannel").val();
+		 		if(!tplChannel){
+		 			alert("关联通道不能为空"); 
+		 			return false; 
+		 		}
+		 	  
+				var tplSign = $("#tplSign").val();
+				if(!tplSign){
+					alert("关联签名不能为空"); 
+					return false; 
+				}
+		
+				var tplType = $("#tplType").val();
+				if(tplType==''){
+					alert("模板类型不能为空"); 
+					return false; 
+				}
+				
+				var tplName = $("#tplName").val();
+				if(tplName==''){
+					alert("模板名称不能为空"); 
+					return false; 
+				}
+				
+				var tplPrice = $("#tplPrice").val();
+				if(tplPrice==''){
+					alert("模板价格不能为空"); 
+					return false; 
+				}
+				
+				var templateInfo = $("#templateInfo").val();
+				if(templateInfo==''){
+					alert("模板内容不能为空"); 
+					return false; 
+				}
+				
+				//return false; 
+
+				var href = "{:url('User/Sms/template')}";
+				
+			 var tplId = $("#tplId").val();
+// 			 if(tplId > 0){
+// 				
+// 				 href = "{:url('User/Label/editLabel')}";
+// 				 
+// 			 }
+	
+	
+		 		 $.ajax({
+		 		     type: "POST",
+		 		     dataType:'json',
+		 		     url: href,
+		 		     cache: false,
+		 		     data: $("#form").serialize(),
+		 		     success: function(data) {
+		          
+		 		    	if (data.code == 0) {
+								
+		 		    	     alert(data.msg + ' 页面即将自动刷新~');
+		 		   
+		 		    	}else{
+		 		    		 alert(data.msg);
+		 		    		
+		 		    	}
+							
+							location.reload();
+							
+		 		     },
+		 		     error: function(data) {
+		 		    	 alert("提交失败");
+		 		     }
+		 		 }) 
+		 		 
+		   $('#newModal').modal('hide');
+
+		 }
+		 
+	 
+    </script>
+      
+</div>
+
+
+{/block}
+

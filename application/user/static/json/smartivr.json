@@ -1,0 +1,133 @@
+{
+	"asr": {
+		"aiuiv2": {
+			"mode": 1,
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"semantic": false,
+			"scene": "main",
+			"keylist": [{
+				"id": "5bc29bfa",
+				"secret": "50ca3a7da92b4d5c85eb3c5132dad16d"
+			},
+			{
+				"id": "5bc29e96",
+				"secret": "5dba5ddde8f04bddae81804319c45610"
+			},
+			{
+				"id": "5bc29ef2",
+				"secret": "578dbab075b54485924c497fe1b20c04"
+			},
+			{
+				"id": "5bc29f64",
+				"secret": "debe9535bf51461cbad20cec1b2b0ff4"
+			},
+			{
+				"id": "5bc29fc7",
+				"secret": "13a1b1d0713c44b486770debdd6ff0bb"
+			},
+			{
+				"id": "5bc2a002",
+				"secret": "173cf134ebca4c4aa9e724d4856a6c7b"
+			},
+			{
+				"id": "5bc2a041",
+				"secret": "42244cccef1441a6bafa260a3fd63849"
+			},
+			{
+				"id": "5bc2a081",
+				"secret": "38d39871b5de47058e2564901c7f727f"
+			},
+			{
+				"id": "5bc2a0c7",
+				"secret": "ffbca88933964378acf4b9758cb2c180"
+			},
+			{
+				"id": "5bc2a11c",
+				"secret": "e689f5f40a7f4907828569e10a3a9696"
+			}
+			]
+		},
+
+		"aliyun": {
+			"mode": 0,
+			"connecttimeout": 2000,
+			"responsetimeout": 3000,
+			"keylist": [{
+				"id": "LTAISH0QyCd8MMCJ",
+				"secret": "pdrZ6VIGVH9hZpTCiwZtGnL7vpF2lP"
+			}]
+		},
+
+
+		"enable": [
+			"aiuiv2",
+			"aliyun"
+		],
+
+		"mode": 1
+	},
+
+
+
+
+	"tts": {
+
+		"baidu": {
+			"mode": 0,
+			"voice": "0",
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"cuid": "robot",
+			"keylist": [{
+				"id": "WXXz2KuAg1HYgVLIlgh0tEt1",
+				"secret": "7ce2d30b64cf7d9c1c772efd07f1246b"
+			}]
+		},
+
+
+		"aliyun": {
+			"mode": 0,
+			"voice": "xiaoyun",
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"keylist": [{
+				"id": "LTAISeEObGSqPWzN",
+				"secret": "QfColjf1yXFwIAD9hYyhlvDKyxnF5U"
+			}]
+		},
+
+		"enable": [
+			"iflytek",
+			"aliyun"
+		],
+		"mode": 0
+	},
+
+
+	"system": {
+		"record": {
+			"path": "/var/smartivr/asrdir",
+			"folderformat": "%Y%m%d"
+		},
+		"tts": {
+			"path": "/var/smartivr/ttsdir"
+		},
+		"gender": {
+			"host": "/tmp/dd_cgi",
+			"times": 0,
+			"path": "/var/smartivr/bin/gender"
+		}
+	},
+
+	"da": {
+		"connect": {
+			"addr": "127.0.0.1",
+			"port": 9977,
+			"reConnectInterval": 15000,
+			"timer": 5000
+		},
+		"key": ""
+	}
+
+}

@@ -1,0 +1,50 @@
+
+
+1、阿里云服务器开放安全组，不清楚的全开
+
+2、宝塔安装
+
+
+3、创建web站点
+
+4、导入数据库telrobot.sql.gz
+
+5、修改数据库配置
+/www/wwwroot/telrobot/application/dabase.php
+
+6、修改config.php
+/www/wwwroot/telrobot/application/config.php
+
+'db_config1' => [
+		// 数据库类型
+		'type'        => 'mysql',
+		 'debug'          => true,
+		// 服务器地址
+		'hostname'    => 'ip',
+		// 数据库名
+		'database'    => 'autodialer',
+		// 数据库用户名
+		'username'    => 'mytel',
+		// 数据库密码
+		'password'    => '7ygv*IK<',
+		// 数据库编码默认采用utf8
+		'charset'     => 'utf8',
+		// 数据库表前缀
+		'prefix'      => '',
+	],
+	
+  
+     'res_url'=>'http://web的ip/',
+    'record_audio_url'=>'http://FS服务器IP/', 
+   
+	'destination_extension'=>'1800001',
+	'notify_url'=>'http://WEB的IP/api/smartivr/unusualNotify',
+        'smartivr_api_path'=>'',
+		//{execute_on_media=start_da2}
+	'start_da2'=>'',
+	'audio_root_path'=>'',
+	'mute_wav'=>'/var/smartivr/sounddir/mute.wav'
+
+
+admin
+123123

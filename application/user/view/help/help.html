@@ -1,0 +1,209 @@
+{extend name="public/base" /}
+{block name="body"}
+
+
+<style type="text/css">
+.helpBar .noticeItem{
+	list-style: none;
+	cursor: pointer;
+	margin: 5px;
+    font-size: 16px;
+}
+
+.helpBar .noticeItem > ul > li{
+	margin: 5px;
+    font-size: 14px;
+}
+
+.noticeItem > ul{
+	list-style: none;
+	cursor: pointer;
+}
+
+.lefttree{
+	width: 200px;
+	height: auto;
+	text-align: left;
+    margin-top: 20px;
+    float: left;
+}
+
+.lefttree ul{
+	padding-inline-start: 10px;
+}
+.helpBar .noticeItem > ul{
+	padding-inline-start: 30px;
+}
+.noticeItem > .glyphicon-triangle-right{
+	font-size: 14px;
+}
+
+.noticeItem > .glyphicon-triangle-bottom{
+	font-size: 16px;
+}
+.content{
+	overflow-y: auto;
+	height:calc(100vh - 146px);
+	overflow-x: hidden;
+}
+
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+
+		<div class="main-box-body clearfix">
+			
+			<div class="row">
+				
+				<div class="lefttree">
+					
+					<ul class="helpBar pull-left">
+						
+						{volist name="data" id="vo"}
+						
+							<li class="noticeItem btn1" attrSon="{$vo.key}">
+								<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+								{$vo.text}
+						           
+						        
+								<ul class="{$vo.key}Son" style="display: none;">
+									
+								 {volist name="$vo.son" id="svo"}  
+									<li class="item" attrVal="{$svo.skey}">{$svo.stext}</li>
+								 {/volist}
+								
+								</ul>
+								
+							
+							</li>
+						
+						{/volist}
+						<!--
+						<li class="noticeItem btn1" attrSon="one">
+							<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+							消息中心
+					
+							<ul class="oneSon" style="display: none;">
+							
+								<li class="item" attrVal="1">用户手册</li>
+								<li class="item" attrVal="2">消费记录</li>				
+					
+							</ul>
+						
+						</li>
+						-->
+					
+					</ul>
+				
+					
+				</div>
+				
+				<div class="content" style="">
+					
+					
+				</div>
+				
+			</div>
+			
+	
+		
+		</div>
+					
+	</div>					
+    
+</div>
+
+ <script type="text/javascript">
+ 	
+	$(function() {
+		
+		
+		
+		$(".btn1").click(function(e){
+		 	
+		 	var getevent = e.srcElement ? e.srcElement : e.target;//不要告诉我不知道这句的意思
+		 	
+			//如果点了除 编辑框，按钮之外的部位，表示已经离开编辑框
+			var son = getevent.getAttribute('attrSon');
+		    $("."+son+"Son").toggle(); 
+		    
+		    var now =  $("."+son+"Son").css("display");
+		    
+		    if(now == "none"){
+		    	$(getevent).find(".glyphicon").addClass("glyphicon-triangle-right");
+		    	$(getevent).find(".glyphicon").removeClass("glyphicon-triangle-bottom");
+		    }
+		    else{
+		    	$(getevent).find(".glyphicon").removeClass("glyphicon-triangle-right");
+		    	$(getevent).find(".glyphicon").addClass("glyphicon-triangle-bottom");
+		    }
+  
+		});
+		
+		$(".item").click(function(e){
+		 	
+		 	var getevent = e.srcElement ? e.srcElement : e.target;//不要告诉我不知道这句的意思
+		 	
+			//如果点了除 编辑框，按钮之外的部位，表示已经离开编辑框
+			var val = getevent.getAttribute('attrVal');
+			
+			// console.log(val);
+			
+			$.post("{:url('backHelp')}",{"val":val},function(data){
+				//console.log();
+		        $(".content").html(data);
+		        return false;
+				if(data.code==0){
+								
+					var list = data.data;
+					var lon = list.length;
+					if(lon){
+						
+						$("#userType").find("option").remove();
+						var str = '<option value="">显示全部</option>';
+						
+						$("#addUserType").find("option").remove();
+						var strings = '<option value="" attr-utype="">请选择用户类型</option>';
+						
+						for(var i=0;i<lon;i++){
+							
+							str += '<option value="'+list[i]["id"]+'">'+list[i]["name"]+'</option>';
+							strings += '<option value="'+list[i]["id"]+'">'+list[i]["name"]+'</option>';
+				
+						}
+						
+						$("#userType").append(str); 
+						
+						$("#addUserType").append(strings); 
+						
+												
+					}
+					else{
+						alert('该类没有数据。');
+					}
+					
+				}
+				else{
+					alert(data.msg);
+				}
+				
+				
+			}); 
+		   
+		});
+		
+		 $('.beginnersSon').find('.item:first').trigger("click");
+		
+	});
+
+ 
+
+ </script>
+  
+</div>
+
+
+
+{/block}
+

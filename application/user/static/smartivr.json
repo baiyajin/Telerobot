@@ -1,0 +1,146 @@
+{
+	"asr": {
+		"aiuiv2": {
+			"mode": 1,
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"semantic": false,
+			"scene": "main",
+			"keylist": [{
+				"id": "",
+				"secret": ""
+			}]
+		},
+
+		"aliyunv2": {
+			"mode": 1,
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"appkey": "",
+			"enable_punctuation_prediction": false,
+			"enable_inverse_text_normalization": false,
+			"enable_voice_detection": false,
+			"keylist": [{
+				"id": "",
+				"secret": ""
+			}]
+		},
+
+		"baidu": {
+			"mode": 1,
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"semantic": false,
+			"scene": "main",
+			"keylist": [{
+				"id": "",
+				"secret": ""
+			}]
+		},
+
+		"iflytek": {
+			"mode": 0,
+			"custom": "ent = feature8k,scence = 8ktele,vad_enable = false",
+			"workdir": "/var/smartivr/iflytek",
+			"responsetimeout": 2000,
+			"command": "./iflytek type=${type} appid=${appid} encoding=utf8 language=zh_cn accent=mandarin",
+			"keylist": [{
+				"id": ""
+			}]
+		},
+
+		"enable": [
+			"aiuiv2",
+			"baidu",
+			"iflytek"
+		],
+
+		"mode": 1
+	},
+
+	"tts": {
+
+		"baidu": {
+			"mode": 0,
+			"voice": "0",
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"cuid": "robot",
+			"keylist": [{
+				"id": "WXXz2KuAg1HYgVLIlgh0tEt1",
+				"secret": "7ce2d30b64cf7d9c1c772efd07f1246b"
+			}]
+		},
+
+
+		"aliyunv2": {
+			"mode": 1,
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"voice": "xiaoyun",
+			"appkey": "",
+			"keylist": [{
+				"id": "WXXz2KuAg1HYgVLIlgh0tEt1",
+				"secret": "7ce2d30b64cf7d9c1c772efd07f1246b"
+			}]
+		},
+		"xfyun": {
+			"mode": 0,
+			"voice": "xiaoyun",
+			"connecttimeout": 1000,
+			"responsetimeout": 2000,
+			"keylist": [{
+				"id": "WXXz2KuAg1HYgVLIlgh0tEt1",
+				"secret": "7ce2d30b64cf7d9c1c772efd07f1246b"
+			}]
+		},
+
+		"iflytek": {
+			"mode": 0,
+
+			"workdir": "/var/smartivr/bin",
+			"voice": "xiaoyan",
+			"speed": 50,
+			"volume": 50,
+
+
+			"command": "iflytek type=${type} appid=${appid} encoding=utf8 file=${file} voice=${voice} volume=${volume} speed=${speed}",
+			"keylist": [{
+				"id": "555fd336"
+			}]
+		},
+
+		"enable": [
+			"iflytek",
+			"aliyunv2"
+		],
+		"mode": 0
+	},
+
+
+	"system": {
+		"record": {
+			"path": "/var/smartivr/uploads/asrdir",
+			"folderformat": "%Y%m%d"
+		},
+		"tts": {
+			"path": "/var/smartivr/ttsdir"
+		},
+		"gender": {
+			"host": "/tmp/dd_cgi",
+			"times": 0,
+			"path": "/var/smartivr/bin/gender"
+		}
+	},
+
+	"da": {
+		"connect": {
+			"addr": "127.0.0.1",
+			"port": 9977,
+			"reConnectInterval": 15000,
+			"timer": 5000
+		},
+		"key": ""
+	}
+
+}

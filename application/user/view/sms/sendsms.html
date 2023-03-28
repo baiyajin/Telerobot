@@ -1,0 +1,175 @@
+{extend name="public/base" /}
+{block name="body"}
+<style type="text/css">
+.table tbody>tr>td {
+	padding: 6px 8px;
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+}
+
+.neweditbtn{
+	  text-align: center;
+}
+
+.textwidth{
+	width:250px;
+}
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			  <h1><i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-faduanxin"></i>发送短信</h1>
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+				<form id="form" class="form-horizontal" enctype="multipart/form-data" method="post">
+					
+					<div class="form-group">
+						<label class="col-lg-2 control-label">手机号码：</label>
+						<div class="col-lg-4 col-sm-10">
+							<input type="text" class="form-control textwidth" id="mobile" name="mobile" placeholder="请输入手机号码....." />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-2 control-label">短信模板：</label>
+						<div class="col-lg-4 col-sm-10">
+							<select class="form-control textwidth" onchange="getcontent(this);" name="tpl" id="tpl">
+                <option value=" " selected="">请选择</option>
+                {volist name="tpllist" id="cvo"}
+                	<option value="{$cvo.id|default=""}">{$cvo.name|default=""}</option>
+                {/volist}
+							</select>
+						</div>
+					</div>
+					
+				<!-- 	<div class="form-group">
+						<label class="col-lg-2 control-label">费用金额：</label>
+						<div class="col-lg-4 col-sm-10">
+							<input type="number" min="1" class="form-control textwidth" id="money" name="money" placeholder="请输入费用金额.....">
+						</div>
+					</div> -->
+					
+					
+					<div class="form-group"> 
+						<label class="col-lg-2 control-label">短信内容：</label>
+						<div class="col-lg-4 col-sm-10">
+							<textarea class="form-control" readonly="readonly" id="content" name="content" placeholder="请输入短信内容....."></textarea>
+						</div>
+					</div>
+					
+				
+					<div style="clear:both;"></div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label"></label>
+						<div class="col-lg-4 col-sm-10">
+							<button type="button" onclick="uploadData();" class="btn btn-primary">保存</button>
+						</div>
+					</div>
+				
+					
+				</form>
+			
+		
+			
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+	 
+	  function getcontent(obj){
+			
+			var val = $(obj).val();
+			
+				{volist name="tpllist" id="vo"}
+		
+					if({$vo.id} == val){
+					
+							$("#content").val('{$vo.conent}');
+						
+					}
+
+				{/volist}
+			
+		
+		 
+		}
+
+		function uploadData(){
+
+			var mobile = $("#mobile").val();
+			if(!mobile){
+				alert("手机号码不能为空"); 
+				return false; 
+			}
+			var tpl = $("#tpl").val();
+			if(tpl==' '){
+				alert("必须选择模板"); 
+				return false; 
+			}
+// 			var money = $("#money").val();
+// 			if(money==''){
+// 				alert("发送费用不能为空"); 
+// 				return false; 
+// 			}
+			var content = $("#content").val();
+			if(content==''){
+				alert("发送内容不能为空"); 
+				return false; 
+			}
+			
+			//var textstr = $("#tpl option:selected").text();
+
+			var href = "{:url('User/Sms/sendSms')}";
+			
+
+			 $.ajax({
+					 type: "POST",
+					 dataType:'json',
+					 url: href,
+					 cache: false,
+					 data: $("#form").serialize(),
+					 success: function(data) {
+						 
+						  console.log(data);
+							
+							if (data.code == 0) {
+									 alert(data.msg + ' 页面即将自动刷新~');
+							}else{
+								 alert(data.msg);
+							}
+							
+							location.reload();
+							
+					 },
+					 error: function(data) {
+						 console.log(data);
+
+						 //alert("提交失败");
+					 }
+			 }) 
+			 
+		 $('#newModal').modal('hide');
+
+		}
+
+   		 
+ 
+ </script>
+  
+</div>
+
+
+{/block}
+

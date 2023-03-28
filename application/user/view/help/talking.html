@@ -1,0 +1,191 @@
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/helpson.css"/>
+
+<style type="text/css">
+
+
+</style>
+
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		
+	
+		
+ 
+		<div class="main-box-body clearfix">
+			
+			<header class="entry-header">
+				<h1 class="entry-title">一、话术管理</h1>	
+				<p style="text-indent: 2em;">话术是由场景节点、流程节点、跳转节点、知识库和意向规则组成，以下分步骤介绍；</p>
+			</header>
+			
+			<div class="sContent">
+				<!-- 1  -->
+				<h4 class="subTitle">1.1 话术</h4>
+				<h4 id="title-0">1.1.1 新建话术</h4>
+				<p>右侧菜单-话术管理</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/newSpeak.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)点击"新建话术"按钮；</p>
+				<p>2)输入话术场景名称；</p>
+				<p>3)选择所属行业；</p>
+				<p>4)选择是否自动打断；是：机器播放中允许客户打断；否：机器人播放完才允许打断；</p>
+				<p>5)单击”确定”按钮；</p>
+				<br>
+				
+				<!--  2  -->
+				<h4 id="title-1">1.1.2 新建话术场景节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/newSceneNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)点击"添加"按钮；</p>
+				<p>2)输入场景节点名称；</p>
+				<p>3)选择场景节点类型；</p>
+				<p>4)单击”确定”按钮；</p>
+				<br>
+				
+				<!--  3  -->
+				<h4>1.1.3 创建流程节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/newProcessNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)拖拽"流程节点"按钮到画布区域</p>
+				<p>2)双击节点区域如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/newProcessNode2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)节点名称：不填写默认为'节点名称' （选填）</p>
+				<p>2)流程标签：机器人播放到该节点标签（选填）</p>
+				<p>3)AI话术：机器人播放的文字内容（必填）</p>
+				<p>4)用户回答：用户回答触发分支节点流利（至少选择一个）</p>
+				<p>5)单击”编辑”图标可以修改该分支的关键词</p>
+				<p>6)增加分支：默认只有5个可以分支，用户根据业务可以增加自定义节点（选填）</p>
+				<p>7)暂停时间：机器人播放完录音时等待用户说话时间默认5000毫秒</p>
+				<p>8)不允许打断：机器人在播放中是否允许用户打断，默认不允许</p>
+				<p>9)指定未回复：等待用户说话超时时机器人播放的录音</p>
+				<p>10)短信通知：播放到该流程节点时，自动发短信给用户</p>
+				<p>11)人工坐席：播放到该流程节点时，转人工坐席</p>
+				<br>
+				
+				
+				<!--  4  -->
+				<h4>1.1.4 创建跳转节点</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/jumpNode.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>拖拽'跳转节点'按钮至画面区域</p>
+				<p>双击节点，打下如下截图</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/jumpNode2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<p>1)节点名称：不填写默认为"节点名称" （选填）</p>
+				<p>2)跳转前话术：机器人在触发”下一步”操作前播放的文字内容（选填）</p>
+				<p>3)下一步：播放到该节点要触发的动作：挂机，下一主流程或指定主流程（必填）</p>
+				<p>4)单击”确定”按钮</p>
+				<br>
+				
+				<!--  5  -->
+				<h4>1.1.5 节点分支连接</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/nodeBranchConnet.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)单击"肯定"按钮不松开</p>
+				<p>2)拖拽到下一节点"蓝色实心加点上"</p>
+				<br>
+				
+				<!--  5  -->
+				<h4>1.1.6 上传录音</h4>
+				<p>右键单击节点区域，截图如下：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/uplodeRecording.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p style="color: red;">注：所有节点创建完成记得点保存按钮，截图如下：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/uploadRecording2.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<br>
+				
+				<!-- 2 -->
+				<h4>1.2 知识库</h4>
+				<p>用于配置回答用户问题的话术和录音，创建新话术会默认有9条知识库记录，灰色按钮是不允许操作的，如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/knowledgeBase.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<br>
+				
+				<h4>1.2.1 添加知识库</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/addKnowledge.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				
+				<p>1)节点名称：不填写默认为"节点名称" （选填）</p>
+				<p>2)问答标签：机器人回答该问题时的标签（选填）</p>
+				<p>3)问答类型：分普通和用户未说话（用于流程节点指定未回答）</p>
+				<p>4)关键字：用户说话包含的关键字多个用英文逗号","分隔</p>
+				<p>5)添加条件：单击可能添加一条机器人话术，一个知识可以添加多条个不同话术</p>
+				<p>6)机器人文字：匹配到该知识库关键字时机器人回答的文字</p>
+				<p>7)删除图标： 删除一条话术文字</p>
+				<p>8)动作：挂机、下一场景节点、指定场景节点、返回当前场景节点、等待用户响应</p>
+				<p>9)意向等级：触发该知识时标记用户的意向等级</p>
+				<p>10)暂停时间：机器人播放完录音时等待用户说话时间默认5000毫秒</p>
+				<p>11)与流程节点相同不在重复介绍</p>
+				<br>
+				
+				
+				<h4>1.2.2 上传录音</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/uploadaudio.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<br>
+				
+				<h4>1.2.3 知识库搜索</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/searchaudio.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<br>
+				
+				<h4>1.2.4 修改排序</h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/editSort.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<br>
+				
+				<h4>1.3 意向规则 </h4>
+				<p>1)用于判断拨打客户号码效果等级规则，界面如下图：</p>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/intentionRule.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>创建话术同时会创建14条默认意向规则，可以根据自己的话术场景调整适合自己的意向规则。</p>
+				<br>
+				
+				
+				<h4>1.4 问题学习 </h4>
+				<div class="wp-block-image">
+					<img src="__STATIC__/helpImg/scenarios/problemLearning.png" sizes="(max-width: 1024px) 100vw, 1024px">
+				</div>
+				<p>1)可以根据状态筛选问题学习的内容</p>
+				<p>2)可以按出现次数排序</p>
+				<br>				
+			
+			</div>
+			
+		
+		</div>
+		
+
+					
+	</div>					
+    
+</div>
+
+ <script type="text/javascript">
+ 
+
+
+ </script>
+  
+</div>
+

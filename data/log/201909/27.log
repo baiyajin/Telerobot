@@ -1,0 +1,1152 @@
+---------------------------------------------------------------
+[ 2019-09-27T02:10:00+08:00 ] 172.16.170.169 1.204.113.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.015098s][吞吐率：66.23req/s] [内存消耗：1,659.02kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; BT_PANEL_6=2744a2e3-dd12-4387-ad24-346057c93a81.-yHJhRc3YYQ9dCyQNSkmepO0Tc4; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T04:53:09+08:00 ] 172.16.170.169 217.65.176.96 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.028413s][吞吐率：35.20req/s] [内存消耗：3,923.06kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000344s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000170s ]
+---------------------------------------------------------------
+[ 2019-09-27T06:07:48+08:00 ] 172.16.170.169 159.203.201.190 GET /
+[ info ] 47.96.126.228/ [运行时间：0.029796s][吞吐率：33.56req/s] [内存消耗：3,923.09kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000206s ]
+---------------------------------------------------------------
+[ 2019-09-27T07:10:57+08:00 ] 172.16.170.169 138.121.213.105 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.029981s][吞吐率：33.35req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000291s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000210s ]
+---------------------------------------------------------------
+[ 2019-09-27T08:08:08+08:00 ] 172.16.170.169 101.251.242.238 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.031630s][吞吐率：31.62req/s] [内存消耗：3,923.59kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+  'accept-charset' => 'GBK,utf-8;q=0.7,*;q=0.3',
+  'accept' => 'application/json, text/plain, */*',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000315s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000652s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000187s ]
+---------------------------------------------------------------
+[ 2019-09-27T08:52:55+08:00 ] 172.16.170.169 190.210.237.63 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.030495s][吞吐率：32.79req/s] [内存消耗：3,923.06kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000310s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000195s ]
+---------------------------------------------------------------
+[ 2019-09-27T09:12:27+08:00 ] 172.16.170.169 159.255.160.226 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.033706s][吞吐率：29.67req/s] [内存消耗：3,923.21kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'cache-control' => 'max-stale=0',
+  'connection' => 'Keep-Alive',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000364s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000801s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000199s ]
+---------------------------------------------------------------
+[ 2019-09-27T09:47:02+08:00 ] 172.16.170.169 139.224.11.233 GET /user/index/verify?0.43258483607565945
+[ info ] 47.96.126.228/user/index/verify?0.43258483607565945 [运行时间：0.037720s][吞吐率：26.51req/s] [内存消耗：3,949.47kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  '0_43258483607565945' => '',
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000316s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000833s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000132s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000146s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000149s ]
+[ log ] ###user_id=time=2019-09-27 09:47:02function=user/index/verify
+---------------------------------------------------------------
+[ 2019-09-27T10:20:04+08:00 ] 172.16.170.169 61.144.211.69 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.015042s][吞吐率：66.48req/s] [内存消耗：1,658.38kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d6c8b79651ab-08a096c8ef9d42-3c604504-100200-16d6c8b7966128; __guid=153879994.2269271795423239000.1569485916108.8096; monitor_count=76',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T10:43:48+08:00 ] 172.16.170.169 47.101.200.37 GET /
+[ info ] 47.96.126.228/ [运行时间：0.029548s][吞吐率：33.84req/s] [内存消耗：3,923.34kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000332s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000187s ]
+---------------------------------------------------------------
+[ 2019-09-27T10:43:48+08:00 ] 172.16.170.169 47.101.200.37 GET /user/index/login
+[ info ] 47.96.126.228/user/index/login [运行时间：0.037671s][吞吐率：26.55req/s] [内存消耗：3,960.80kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000300s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000690s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000133s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000421s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000121s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000127s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000197s ]
+[ log ] ###user_id=time=2019-09-27 10:43:48function=user/index/login
+---------------------------------------------------------------
+[ 2019-09-27T10:43:49+08:00 ] 172.16.170.169 47.101.200.37 GET /user/index/verify
+[ info ] 47.96.126.228/user/index/verify [运行时间：0.036036s][吞吐率：27.75req/s] [内存消耗：3,948.63kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000342s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000652s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000155s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000136s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000163s ]
+[ log ] ###user_id=time=2019-09-27 10:43:49function=user/index/verify
+---------------------------------------------------------------
+[ 2019-09-27T11:31:57+08:00 ] 172.16.170.169 171.67.70.80 GET /
+[ info ] 47.96.126.228/ [运行时间：0.032856s][吞吐率：30.44req/s] [内存消耗：3,923.09kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000401s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000187s ]
+---------------------------------------------------------------
+[ 2019-09-27T11:50:57+08:00 ] 172.16.170.169 1.204.113.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.013854s][吞吐率：72.18req/s] [内存消耗：1,659.02kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; BT_PANEL_6=2744a2e3-dd12-4387-ad24-346057c93a81.-yHJhRc3YYQ9dCyQNSkmepO0Tc4; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T12:41:13+08:00 ] 172.16.170.169 36.67.86.127 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.029509s][吞吐率：33.89req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000310s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000740s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000177s ]
+---------------------------------------------------------------
+[ 2019-09-27T13:01:29+08:00 ] 172.16.170.169 59.59.52.198 HEAD /phpmyadmin/
+[ info ] 47.96.126.228/phpmyadmin/ [运行时间：0.015131s][吞吐率：66.09req/s] [内存消耗：1,656.27kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phpmyadmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T13:17:07+08:00 ] 172.16.170.169 88.227.44.249 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.028974s][吞吐率：34.51req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000269s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000653s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000191s ]
+---------------------------------------------------------------
+[ 2019-09-27T13:50:54+08:00 ] 172.16.170.169 61.144.211.69 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.014552s][吞吐率：68.72req/s] [内存消耗：1,658.38kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d6c8b79651ab-08a096c8ef9d42-3c604504-100200-16d6c8b7966128; __guid=153879994.2269271795423239000.1569485916108.8096; monitor_count=76',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T14:05:16+08:00 ] 172.16.170.169 61.144.211.69 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.015885s][吞吐率：62.95req/s] [内存消耗：1,658.38kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d6c8b79651ab-08a096c8ef9d42-3c604504-100200-16d6c8b7966128; __guid=153879994.2269271795423239000.1569485916108.8096; monitor_count=76',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T14:13:15+08:00 ] 172.16.170.169 1.204.113.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.015302s][吞吐率：65.35req/s] [内存消耗：1,659.02kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; BT_PANEL_6=2744a2e3-dd12-4387-ad24-346057c93a81.-yHJhRc3YYQ9dCyQNSkmepO0Tc4; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T14:21:24+08:00 ] 172.16.170.169 95.181.2.222 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.029900s][吞吐率：33.44req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000158s ]
+---------------------------------------------------------------
+[ 2019-09-27T14:21:26+08:00 ] 172.16.170.169 123.108.50.205 GET /
+[ info ] 47.96.126.228/ [运行时间：0.029876s][吞吐率：33.47req/s] [内存消耗：3,923.09kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000379s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000169s ]
+---------------------------------------------------------------
+[ 2019-09-27T14:21:27+08:00 ] 172.16.170.169 123.108.50.205 GET /user/index/login
+[ info ] 47.96.126.228:80/user/index/login [运行时间：0.035723s][吞吐率：27.99req/s] [内存消耗：3,961.09kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 zgrab/0.x',
+  'accept' => '*/*',
+  'referer' => 'http://47.96.126.228:80/',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000306s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000114s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000147s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228:80' LIMIT 1 [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000153s ]
+[ log ] ###user_id=time=2019-09-27 14:21:27function=user/index/login
+---------------------------------------------------------------
+[ 2019-09-27T14:31:39+08:00 ] 172.16.170.169 1.204.113.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.013915s][吞吐率：71.87req/s] [内存消耗：1,659.02kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; BT_PANEL_6=2744a2e3-dd12-4387-ad24-346057c93a81.-yHJhRc3YYQ9dCyQNSkmepO0Tc4; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T14:35:31+08:00 ] 172.16.170.169 189.69.16.145 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.028598s][吞吐率：34.97req/s] [内存消耗：3,923.06kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000326s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000806s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000183s ]
+---------------------------------------------------------------
+[ 2019-09-27T14:42:04+08:00 ] 172.16.170.169 1.204.113.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.014515s][吞吐率：68.89req/s] [内存消耗：1,659.04kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; BT_PANEL_6=2744a2e3-dd12-4387-ad24-346057c93a81.-yHJhRc3YYQ9dCyQNSkmepO0Tc4; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T14:58:20+08:00 ] 172.16.170.169 47.101.45.59 GET /
+[ info ] 47.96.126.228/ [运行时间：0.030036s][吞吐率：33.29req/s] [内存消耗：3,923.34kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000304s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000692s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000196s ]
+---------------------------------------------------------------
+[ 2019-09-27T14:58:20+08:00 ] 172.16.170.169 47.101.45.59 GET /user/index/login
+[ info ] 47.96.126.228/user/index/login [运行时间：0.035602s][吞吐率：28.09req/s] [内存消耗：3,960.80kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000324s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000174s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000138s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000108s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000460s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000156s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000153s ]
+[ log ] ###user_id=time=2019-09-27 14:58:20function=user/index/login
+---------------------------------------------------------------
+[ 2019-09-27T14:58:23+08:00 ] 172.16.170.169 47.101.45.59 GET /user/index/verify
+[ info ] 47.96.126.228/user/index/verify [运行时间：0.034586s][吞吐率：28.91req/s] [内存消耗：3,948.63kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000332s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000590s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000121s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000132s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000189s ]
+[ log ] ###user_id=time=2019-09-27 14:58:23function=user/index/verify
+---------------------------------------------------------------
+[ 2019-09-27T15:01:24+08:00 ] 172.16.170.169 61.144.211.69 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.014603s][吞吐率：68.48req/s] [内存消耗：1,658.38kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d6c8b79651ab-08a096c8ef9d42-3c604504-100200-16d6c8b7966128; __guid=153879994.2269271795423239000.1569485916108.8096; monitor_count=76',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T16:39:30+08:00 ] 172.16.170.169 61.144.211.69 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.014510s][吞吐率：68.92req/s] [内存消耗：1,658.38kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16d6c8b79651ab-08a096c8ef9d42-3c604504-100200-16d6c8b7966128; __guid=153879994.2269271795423239000.1569485916108.8096; monitor_count=76',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T20:57:54+08:00 ] 172.16.170.169 111.121.64.127 GET /favicon.ico
+[ info ] 47.96.126.228/favicon.ico [运行时间：0.014940s][吞吐率：66.93req/s] [内存消耗：1,658.75kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'order=id%20desc; memSize=1839; sites_path=/www/wwwroot; serverType=nginx; uploadSize=1073741824; rank=a; aceEditor=%7B%22fontSize%22%3A%2212px%22%2C%22theme%22%3A%22monokai%22%7D; request_token=SYCTy5qkvb1XWykP8XZYUGpgyfn9NsHWhNClh5c80DpVaNp1; layers=5; Path=/www/wwwroot/web/application/user/view/index',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-09-27T23:12:39+08:00 ] 172.16.170.169 95.67.11.114 GET /
+[ info ] 47.96.126.228/ [运行时间：0.028625s][吞吐率：34.93req/s] [内存消耗：3,922.72kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000374s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000162s ]
+---------------------------------------------------------------
+[ 2019-09-27T23:43:21+08:00 ] 172.16.170.169 185.95.186.84 GET /
+[ info ] 47.96.126.228/ [运行时间：0.029024s][吞吐率：34.45req/s] [内存消耗：3,923.50kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'host' => '47.96.126.228',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000203s ]

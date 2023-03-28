@@ -1,0 +1,484 @@
+{extend name="public/base" /}
+{block name="body"}
+<style type="text/css">
+.table tbody>tr>td {
+	padding: 6px 8px;
+}
+.table-responsive {
+	min-height: .01%;
+	overflow-x: hidden;
+}
+
+#newModal > .modal-dialog {
+    width: 450px;
+    margin: 30px auto;
+}
+
+.textwidth{
+	width:250px;
+}
+
+#form .margintip10 {
+    margin-top: 10px;
+}
+</style>
+<div class="row">
+<div class="col-lg-12">
+	<div class="main-box clearfix">	
+		<header class="main-box-header clearfix">
+		  <div class="pull-left">
+			  <h1><i style="font-size: 30px;margin-right: 10px;" class="icon iconfont icon-navicon-dxtdwh"></i>短信通道</h1>
+				<a class="btn btn-primary" href="javascript:void(0);" onclick="addNew(0);">添加通道</a>
+		  </div>
+		</header>
+		
+		 
+		<div class="main-box-body clearfix">
+		
+	      <section class="navbar navbar-default main-box-header clearfix">
+	         <div  class="pull-right">
+						 <form class="form-inline"  method="get" role="form">
+							 
+							<div class="form-group">
+								<label>通道名：</label>
+								<input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入通道名.....">
+							</div>
+							<button class="btn btn-primary" type="submit">搜索</button>
+						</form>
+			    </div>
+		    </section>
+
+		    <div style="height:10px;line-height:30px;background-color:#FBFBFB;"></div>
+		     
+			  <div class="table-responsive">
+			  
+				 <table class="table table-bordered table-hover">
+				    <thead>
+					    <tr>
+					        <th class="text-center"></th>
+									<th class="text-center">通道名称	</th>
+					        <th class="text-center">接口地址</th>
+					        <th class="text-center">短信帐号	</th>
+									<th class="text-center">状态</th>	
+									<th class="text-center">默认</th>	
+									<th class="text-center">价格</th>	
+									<th class="text-center">剩余数量</th>	
+									<th class="text-center">备注</th>	
+					        <th class="text-center" style="width: 70px;">操作</th> 
+					    </tr>
+				    </thead>
+				   <tbody>
+				   
+							{volist name="list" id="list"}
+								<tr>
+								 <td class="text-center">
+										<input type="checkbox" name="channelids" class="channelids" value="{$list.id|default=""}"/>
+								 </td>
+									<td class="text-center">{$list.name|default=""}</td>
+									<td class="text-center">{$list.url|default=""}</td>
+									<td class="text-center">{$list.user_id|default=""}</td>
+									<td class="text-center">
+										<!-- <a href="javascript:void(0);" onclick="showExamine(212);"></a> -->
+										 {switch name="$list.status" }
+												{case value="1"}通过{/case}
+												{default /}审核中
+										 {/switch}
+									</td>
+									<td class="text-center">
+										{switch name="$list.is_default" }
+											{case value="1"}是{/case}
+											{default /}否
+										{/switch}
+									</td>
+									<td class="text-center">{$list.price|default=""}</td>
+									
+									<td class="text-center">{$list.count|default=""}</td>
+									<td class="text-center">{$list.remarks|default=""}</td>
+							
+									<td class="text-center">
+										  <a href="javascript:void(0);" onclick="addNew({$list.id|default='0'});">编辑</a>
+											<a href="javascript:void(0);" onclick="delRole({$list.id|default='0'});">删除</a>	
+									</td>
+								</tr>  
+				      {/volist}
+		          
+				    </tbody>
+				  </table>
+					
+					<div class="row">
+							<div class="col-sm-4 text-left"></div>
+							<div class="col-sm-8 text-right">{$page}</div>
+					</div>
+						
+			  </div>
+		
+				<footer class="main-box-footer clearfix">
+					<div class="pull-left">
+							<input class="check-all" onclick="allcheck();" type="checkbox"/>全选
+						<button class="btn btn-primary" onclick="delRole(0);" target-form="ids">删 除</button>
+					</div>
+				</footer>
+		
+		</div>
+					
+	</div>					
+    
+
+
+</div>
+
+ <script type="text/javascript">
+ 
+ $(function(){
+		var keyword = "{$_GET['keyword']|default=''}";
+		$('#keyword').val(keyword);
+})
+ 
+
+//删除角色
+ function delRole(id){
+    var r=confirm('确认删除?');
+     	if (!r) 
+           return; 
+     	   var ids;
+ 	    	if(id){
+ 	    		var Ids=[];
+ 	    		Ids.push(id);
+ 	    		ids = Ids;
+ 	    	}else{
+ 	    		 var IdsVal = [];
+ 	        	 var roleids = document.getElementsByName("channelids");
+ 	    		 for ( var j = 0; j < roleids.length; j++) {
+ 	    		    if (roleids.item(j).checked == true) {
+ 	    		    	IdsVal.push(roleids.item(j).value);
+ 	    		    }
+ 	    		 }
+ 	    		 ids = IdsVal;
+ 	    	}
+ 		
+ 	    	if(!ids.length){
+ 	    		 alert("至少选择一条。");
+ 	    		 return false; 
+ 	    	}
+ 	    	
+     		$.post("{:url('delChannel')}",{'ids':ids},function(data){
+							if (data.code) {
+								 alert(data.msg);
+							}else{
+								 location.reload();
+							}
+				}); 
+			
+
+ }
+//全选
+ function allcheck(){	
+	 
+ 	if ($('.check-all').is(":checked")) {	
+ 		$('.channelids').prop("checked","checked");
+ 	}else{
+ 		$('.channelids').prop("checked",false);
+ 	}
+
+ }
+  
+ </script>
+  
+</div>
+
+
+<!-- 新建通道 -->
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	
+		<div class="modal-dialog">
+			
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								 <span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">短信通道</h4>
+				  </div>
+				 <div class="modal-body">
+						  <form id="form" method="post" class="form-horizontal" enctype="multipart/form-data" method="post">
+
+									<div class="form-group">
+										<label class="col-lg-3 control-label">通道名称：</label>
+										<div class="col-lg-9 col-sm-9">
+											 <input type="text" class="form-control textwidth" placeholder="请输入通道名称" name="celName" id="celName" value="" />
+										</div>
+									</div>
+										
+									<div class="form-group">
+										<label class="col-lg-3 control-label">接口地址：</label>
+										<div class="col-lg-9 col-sm-9">
+											 	<input type="text" class="form-control textwidth" placeholder="请输入接口地址" name="iAddress" id="iAddress" value="" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">短信ID：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="text" class="form-control textwidth" placeholder="请输入短信ID" name="account_id" id="account_id" value="" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">短信账号：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="text" class="form-control textwidth" placeholder="请输入短信账号" name="account" id="account" value="" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">短信密码：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="text" class="form-control textwidth" placeholder="请输入短信密码" name="acpsw" id="acpsw" value="" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">单价：</label>
+										<div class="col-lg-9 col-sm-9">
+											<div class="form-group">
+												<label class="col-lg-3 control-label">验证码类：</label>
+												<div class="col-lg-8 col-sm-8">
+														<input type="number" min="1" class="form-control pull-left" style="width: 80%;" placeholder="请输入验证码类单价" name="codePrice" id="codePrice" value="" />					 
+														<span style="line-height: 40px;margin-left: 5px;">元</span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-3 control-label">通知类：</label>
+												<div class="col-lg-8 col-sm-8">
+														<input type="number" min="1" class="form-control pull-left" style="width: 80%;" placeholder="请输入通知类单价" name="noticePrice" id="noticePrice" value="" />					 
+														<span style="line-height: 40px;margin-left: 5px;">元</span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-3 control-label">营销类：</label>
+												<div class="col-lg-8 col-sm-8">
+														<input type="number" min="1" class="form-control pull-left" style="width: 80%;" placeholder="请输入营销类单价" name="marketingPrice" id="marketingPrice" value="" />					 
+												    <span style="line-height: 40px;margin-left: 5px;">元</span>
+												</div>
+											</div>
+											
+										
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">数量：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="text" class="form-control textwidth" placeholder="请输入数量" name="quantity" id="quantity" value="" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">备注：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="text" class="form-control textwidth" placeholder="请输入备注" name="remarks" id="remarks" value="" />					 
+										</div>
+									</div>
+									
+								<!-- 	<div class="form-group">
+										<label class="col-lg-3 control-label">签名在前：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="checkbox" class="margintip10" name="autograph" id="autograph" value="1" title="是" />					 
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">是否有效：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="checkbox" class="margintip10" name="effective" id="effective" value="1" title="是" />					 
+										</div>
+									</div> -->
+									
+									<div class="form-group">
+										<label class="col-lg-3 control-label">默认：</label>
+										<div class="col-lg-9 col-sm-9">
+												<input type="checkbox" class="margintip10" name="default" id="default" value="1" title="是" />					 
+										</div>
+									</div>
+									
+									
+				          <input type="hidden" name="channelId" id="channelId" value="" />
+ 
+							</form>
+				  <br/>
+				 </div>
+				  <div style="clear:both;"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" onclick="uploadData();" class="btn btn-primary">保存</button>
+					</div>
+			</div>
+						 
+		</div>
+		 
+    <script type="text/javascript">
+
+	     //保存页面
+		 function addNew(uid){	
+			 $("#channelId").val(uid);
+			 
+			 if(uid > 0){
+
+				 		$.ajax({
+				 				type: "POST",
+				 				dataType:'json',
+				 				url: "{:url('User/Sms/getChannel')}",
+				 				cache: false,
+				 				data: {id:uid},
+				 				success: function(data) {
+	
+									if (data.code == 0) {
+										
+										  var data = data.data;
+										$("#celName").val(data.name);
+										$("#iAddress").val(data.url);
+										$("#account_id").val(data.user_id);
+										$("#account").val(data.access_secret);
+										
+										$("#acpsw").val(data.password);
+
+										var price = data.price;
+										$("#codePrice").val(price.codePrice);
+										$("#noticePrice").val(price.noticePrice);
+										$("#marketingPrice").val(price.marketingPrice);
+
+										$("#quantity").val(data.count);
+										$("#remarks").val(data.remarks);
+										if(data.is_default){
+											$("#default").prop("checked",true);
+										}else{
+											$("#default").prop("checked",false);
+										}
+										
+                    
+                      $('#newModal').modal('show');
+
+									}
+									
+ 				 				},
+				 				error: function(data) {
+				 					alert("提交失败");
+				 				}
+				 		}) 
+				 		
+				 
+			 }
+			 else{
+				 
+					$("#celName").val("");
+					$("#iAddress").val("");
+					$("#account_id").val("");
+					$("#account").val("");
+					$("#acpsw").val("");
+
+					$("#codePrice").val("");
+					$("#noticePrice").val("");
+					$("#marketingPrice").val("");
+					$("#quantity").val("");
+					$("#remarks").val("");
+					
+					$("#default").prop("checked",false);
+
+					$('#newModal').modal('show');
+
+			 }
+			
+		 }	
+		 
+		 
+		 function uploadData(){
+
+		 		var celName = $("#celName").val();
+		 		if(!celName){
+		 			alert("通道名称不能为空"); 
+		 			return false; 
+		 		}
+		 	  var iAddress = $("#iAddress").val();
+		 	  if(iAddress==''){
+		 		  alert("接口地址不能为空"); 
+		 		  return false; 
+		 	  }
+				var account_id = $("#account_id").val();
+		 	  if(account_id==''){
+		 		  alert("短信ID不能为空"); 
+		 		  return false; 
+		 	  }
+				var account = $("#account").val();
+		 	  if(account==''){
+		 		  alert("短信账号不能为空"); 
+		 		  return false; 
+		 	  }
+				
+
+		 	  var codePrice = $("#codePrice").val();
+		 	  if(codePrice==''){
+		 		  alert("验证码类单价不能为空"); 
+		 		  return false; 
+		 	  }
+				
+				var noticePrice = $("#noticePrice").val();
+				if(noticePrice==''){
+					alert("通知类单价不能为空"); 
+					return false; 
+				}
+				
+				var marketingPrice = $("#marketingPrice").val();
+				if(marketingPrice==''){
+					alert("营销类单价不能为空"); 
+					return false; 
+				}
+				
+				
+				var quantity = $("#quantity").val();
+				if(quantity==''){
+					alert("数量不能为空"); 
+					return false; 
+				}
+	
+	
+	
+				var href = "{:url('User/Sms/channel')}";
+				
+
+		 		 $.ajax({
+		 		     type: "POST",
+		 		     dataType:'json',
+		 		     url: href,
+		 		     cache: false,
+		 		     data: $("#form").serialize(),
+		 		     success: function(data) {
+		           // console.log(data);
+		 		     	 //location.href = "{:url('User/member/whitelist')}";
+		 		    	if (data.code == 0) {
+		 		    	     alert(data.msg + ' 页面即将自动刷新~');
+		 		    	 	// location.href = "{:url('User/member/whitelist')}";
+		 		    	}else{
+		 		    		 alert(data.msg);
+		 		    		
+		 		    	}
+							
+							location.reload();
+							
+		 		     },
+		 		     error: function(data) {
+		 		    	 alert("提交失败");
+		 		     }
+		 		 }) 
+		 		 
+		   $('#newModal').modal('hide');
+
+		 }
+		 
+		 
+    </script>
+      
+</div>
+
+
+{/block}
+

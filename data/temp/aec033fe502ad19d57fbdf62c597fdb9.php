@@ -1,0 +1,155 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:55:"/www/wwwroot/web/application/user/view/index/login.html";i:1569485483;}*/ ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="__CSS__/animate.css" media="all">
+        <link rel="stylesheet" type="text/css" href="__CSS__/login.css?w3" media="all">
+        <link rel="stylesheet" href="__CSS__/style1.css">
+    </head>
+    <body>
+        <header>
+            <nav class="b_clear">
+                <div class="nav_logo l_float">
+                    <img src="__IMG1__/logo.png" alt="">
+                </div>
+                <div class="nav_link r_float">
+                    <ul>
+                        <li><a href="#">返回首页</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="login_body l_clear">
+                <div class="login_form l_float">
+                    <div class="login_top">
+                        <div class="login_tags b_clear">
+                            <span class="top_tag l_float active" onClick="PwdLogin()">密码登录</span>
+                            <span class="top_tag r_float" onClick="QrcodeLogin()">扫码登录</span>
+                        </div>
+                    </div>
+                    <div class="login_con">
+                        <form action="" method="POST">
+                            <div>
+                                <label for="user_name">用户名</label>
+                                <input type="text" name="username" id="user_name" placeholder="账号/手机号/邮箱">
+                                <img src="__IMG1__/icons/user.svg">
+                                <p class="tips hidden">请检查您的账号</p>
+                            </div>
+                            <div>
+                                <label for="user_pwd">密码</label>
+                                <input type="password" name="password" id="user_pwd" placeholder="请输入账户密码">
+                                <img src="__IMG1__/icons/lock.svg">
+                                <p class="tips hidden">请检查您的密码</p>
+                            </div>
+<!--                            <div class="layui-form-item larry-verfiy-code" id="larry_code">-->
+<!--                                <input type="text" name="verify" class="layui-input larry-input" placeholder="请输入验证码"  autocomplete="off">-->
+<!--                                <div class="code">-->
+<!--                                    <div class="arrow"></div>-->
+<!--                                    <div class="code-img">-->
+<!--                                        <img src="<?php echo url('user/index/verify'); ?>" alt="" id="verifyimg" >-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="b_clear">
+                                <label for="auth_code" class="b_clear">验证码</label>
+                                <input type="text" name="verify" id="auth_code" placeholder="" class="l_float" maxlength="6">
+                                <div class="auth_code l_float code">
+                                    <div class="arrow"></div>
+                                    <div class="code-img">
+                                        <img src="<?php echo url('user/index/verify'); ?>" alt="" id="verifyimg" >
+                                    </div>
+                                </div>
+<!--                                <button class="auth_code l_float">获取验证码</button>-->
+                                <img src="__IMG1__/icons/auth_code.svg">
+
+                            </div>
+                            <div class="b_clear submit">
+                                
+                                <button type="submit">登&nbsp;&nbsp;录</button>
+                                <a href="#" class="r_float">忘记密码？</a>
+                                
+                            </div>
+                        </form>   
+                    </div>
+                    <div class="login_con hidden">
+                        <div class="qr_code">
+                                <img src="__IMG1__/qr.png" alt="">
+                                <p>请使用微信扫码登录<br>仅支持已绑定微信的账户进行快速登录</p>
+                        </div>
+                        
+                    </div>
+                    <div class="login_otherAccount">
+                        <span>第三方登录</span>
+                        <a href="http://"><img src="__IMG1__/icons/wechat.svg" alt="微信登录"></a>
+                        <a href="http://"><img src="__IMG1__/icons/weibo.svg" alt="微博登录"></a>
+                        <a href=""><img src="__IMG1__/icons/qq.svg" alt="QQ登录"></a>
+                    </div>
+                    
+                </div>
+                <div class="login_ad l_float" id="AdImg">
+                    <a href="">查看详情</a>
+                </div>
+            </div>
+            <div class="footer">
+                        <p>Copyright © 2013-2019  <a href="#">PSSDSS</a></p>
+                        <!-- <a href="http://www.beian.gov.cn/" target="_blank"><img src="imgs/icons/national_emblem.svg" alt="公安部备案">蒙公网安备15020302000160号</a> -->
+<!--                        <a href="#" target="_blank"><img src="__IMG1__/icons/icp_record_filing.svg" alt="工信部备案">蒙ICP备15000557号</a>更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>-->
+                    </div>
+        </div>
+        <script type="text/javascript" src="__PUBLIC__/plugs/jquery/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/js/jquery.bcat.bgswitcher.js"></script>
+        <script src="__PUBLIC__/js/messager.js"></script>
+        <script src="__JS__/login.js"></script>
+        <script type="text/javascript">
+            // var srcBgArray = ["__IMG__/3.png","__IMG__/2.jpg"];
+            $(function(){
+                // var currHeight = ($(document).height()-$('#larry_login').height())/2.5;
+                // $('#larry_login').css("margin-top", currHeight);
+
+
+                // $("#bg-body").bcatBGSwitcher({
+                //     urls: srcBgArray,
+                //     alt: 'Full screen background image'
+                // });
+
+                var verifyimg = $("#verifyimg").attr("src");
+                $("#verifyimg").click(function(){
+                    if(verifyimg.indexOf('?')>0){
+                        $("#verifyimg").attr("src", verifyimg+'&random='+Math.random());
+                    }else{
+                        $("#verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+                    }
+                });
+
+                $("form").submit(function(){
+                    var self = $(this);
+                    $.post(self.attr("action"), self.serialize(), success, "json");
+                    return false;
+
+                    function success(data){
+                        if(data.code){
+                            //$.messager.show(data.msg, {placement: 'center',type:'success'});
+                            setTimeout(function(){
+                                window.location.href = data.url;
+                            },500);
+                        } else {
+                            $.messager.show(data.msg, {placement: 'center',type:'warning'});
+                            //刷新验证码
+
+                            $("#verifyimg").click();
+                        }
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>
+
